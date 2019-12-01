@@ -1,0 +1,11 @@
+<resources>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="app_name">MyRestaurant</string>
+    <string name="login_email_hint">Tên đăng nhập</string>
+    <string name="login_password_hint">Mật khẩu</string>
+    <string name="connect_to_server_failed">Không thể kết nối!</string>
+
+</resources>

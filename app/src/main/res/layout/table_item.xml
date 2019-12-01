@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:id="@+id/table_item"
+    android:layout_margin="10px"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="175dp"
+    android:layout_height="175dp">
+
+    <TextView
+        android:id="@+id/txt_table_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Table 1 \nthien"
+        android:textSize="24px"
+        android:background="@color/colorAccent"/>
+
+</androidx.cardview.widget.CardView>
