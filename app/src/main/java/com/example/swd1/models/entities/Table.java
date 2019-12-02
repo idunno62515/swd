@@ -7,32 +7,38 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.time.*;
+import java.util.Date;
 
 public class Table implements Serializable {
 
-    @SerializedName("Id")
+    @SerializedName("id")
     @Expose
     private Integer id;
 
-    @SerializedName("Number")
+    @SerializedName("number")
     @Expose
     private String number;
 
-    @SerializedName("Text")
+    @SerializedName("text")
     @Expose
     private String text;
 
-    @SerializedName("Status")
+    @SerializedName("status")
     @Expose
-    private Integer Status;
+    private Integer status;
 
-    @SerializedName("CurrentOrderId")
+    @SerializedName("floor")
+    @Expose
+    private int floor;
+
+    @SerializedName("currentOrderId")
     @Expose
     private Integer  currentOrderId;
 
-    @SerializedName("CurrentOrderDate")
+    @SerializedName("currentOrderDate")
     @Expose
-    private String currentOrderDate;
+    private Date currentOrderDate;
 
     public Table() {
     }
@@ -62,11 +68,11 @@ public class Table implements Serializable {
     }
 
     public Integer getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(Integer status) {
-        Status = status;
+        this.status = status;
     }
 
     public Integer getCurrentOrderId() {
@@ -77,12 +83,29 @@ public class Table implements Serializable {
         this.currentOrderId = currentOrderId;
     }
 
-    public String getCurrentOrderDate() {
+//    public String getCurrentOrderDate() {
+//        return currentOrderDate;
+//    }
+//
+//    public void setCurrentOrderDate(String currentOrderDate) {
+//        this.currentOrderDate = currentOrderDate;
+//    }
+
+
+    public Date getCurrentOrderDate() {
         return currentOrderDate;
     }
 
-    public void setCurrentOrderDate(String currentOrderDate) {
+    public void setCurrentOrderDate(Date currentOrderDate) {
         this.currentOrderDate = currentOrderDate;
+    }
+
+    public int getFloor() {
+        return floor;
+    }
+
+    public void setFloor(int floor) {
+        this.floor = floor;
     }
 
     @NonNull
