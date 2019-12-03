@@ -4,20 +4,26 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Category implements Serializable {
 
-    @SerializedName("Id")
+    @SerializedName("id")
     @Expose
-    private Integer id ;
+    private Integer id;
 
-    @SerializedName("Code")
+    @SerializedName("code")
     @Expose
-    private Integer code ;
+    private Integer code;
 
-    @SerializedName("Name")
+    @SerializedName("name")
     @Expose
-    private String name ;
+    private String name;
+
+    @SerializedName("products")
+    @Expose
+    private List<Product> products;
+
 
     //    public Integer Type ;
     //
@@ -40,6 +46,7 @@ public class Category implements Serializable {
     //    public String ShortName ;
 
     public Category() {
+
     }
 
     public Integer getId() {
@@ -66,4 +73,11 @@ public class Category implements Serializable {
         this.name = name;
     }
 
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
 }
