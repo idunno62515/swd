@@ -2,7 +2,7 @@ package com.example.swd1.presenters;
 
 import com.example.swd1.models.TableRepository;
 import com.example.swd1.models.entities.Table;
-import com.example.swd1.views.fragments.TableViewListener;
+import com.example.swd1.views.TableViewListener;
 
 import java.util.List;
 

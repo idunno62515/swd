@@ -1,4 +1,4 @@
-package com.example.swd1.views.fragments;
+package com.example.swd1.views;
 
 import com.example.swd1.models.entities.Category;
 

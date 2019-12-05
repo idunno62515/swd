@@ -3,9 +3,20 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="app_name">MyRestaurant</string>
-    <string name="login_email_hint">Tên đăng nhập</string>
+    <string name="app_name">The Restaurant</string>
+    <string name="login_username_hint">Tên đăng nhập</string>
     <string name="login_password_hint">Mật khẩu</string>
     <string name="connect_to_server_failed">Không thể kết nối!</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_table">Bàn</string>
+    <string name="menu_menu">Thực đơn</string>
+    <string name="menu_logout">Đăng xuất</string>
 
 </resources>

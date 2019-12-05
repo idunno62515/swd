@@ -9,14 +9,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swd1.R;
 import com.example.swd1.models.entities.Category;
 import com.example.swd1.presenters.CategoryPresenter;
-import com.example.swd1.presenters.CategoryPresenterListener;
+import com.example.swd1.views.CategoryViewListener;
 import com.example.swd1.views.adapters.CategoryAdapter;
 
 import java.util.List;

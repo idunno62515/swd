@@ -2,7 +2,7 @@ package com.example.swd1.presenters;
 
 import com.example.swd1.models.CategoryRepository;
 import com.example.swd1.models.entities.Category;
-import com.example.swd1.views.fragments.CategoryViewListener;
+import com.example.swd1.views.CategoryViewListener;
 
 import java.util.List;
 

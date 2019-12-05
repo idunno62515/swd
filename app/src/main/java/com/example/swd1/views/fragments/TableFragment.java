@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.swd1.R;
 import com.example.swd1.models.entities.Table;
 import com.example.swd1.presenters.TablePresenter;
+import com.example.swd1.views.TableViewListener;
 import com.example.swd1.views.adapters.TableAdapter;
 
 import java.util.List;
