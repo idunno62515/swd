@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     android:id="@+id/table_item"
-    android:layout_margin="10px"
+    android:layout_margin="20px"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="175dp"
-    android:layout_height="175dp">
+    android:layout_width="120dp"
+    android:layout_height="120dp">
 
     <TextView
         android:id="@+id/txt_table_name"
@@ -13,6 +13,6 @@
         android:gravity="center"
         android:text="Table 1 \nthien"
         android:textSize="24px"
-        android:background="@color/colorAccent"/>
+        android:background="@android:color/white"/>
 
 </androidx.cardview.widget.CardView>

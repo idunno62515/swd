@@ -1,6 +1,7 @@
 package com.example.swd1.presenters;
 
 import com.example.swd1.models.TableRepository;
+import com.example.swd1.models.entities.Floor;
 import com.example.swd1.models.entities.Table;
 import com.example.swd1.views.TableViewListener;
 
@@ -21,7 +22,7 @@ public class TablePresenter implements TablePresenterListener {
     }
 
     @Override
-    public void onGetListTableSuccess(List<Table> list) {
+    public void onGetListTableSuccess(List<Floor> list) {
         callBack.displayTableList(list);
     }
 

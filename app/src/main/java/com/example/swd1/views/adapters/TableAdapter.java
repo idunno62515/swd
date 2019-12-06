@@ -19,9 +19,9 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.ViewHolder> 
     private List<Table> listTable;
     private OnCallBack callBack;
 
-    public TableAdapter(List<Table> listTable, OnCallBack context) {
+    public TableAdapter(List<Table> listTable, OnCallBack listener) {
         this.listTable = listTable;
-        this.callBack = context;
+        this.callBack = listener;
     }
 
     @NonNull

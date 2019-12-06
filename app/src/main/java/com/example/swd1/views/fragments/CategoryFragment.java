@@ -20,7 +20,7 @@ import com.example.swd1.views.adapters.CategoryAdapter;
 
 import java.util.List;
 
-public class CategoryFragment extends Fragment implements CategoryViewListener {
+public class CategoryFragment extends Fragment implements CategoryViewListener, CategoryAdapter.OnCallBack {
 
     private RecyclerView lvCate;
     private CategoryPresenter presenter;
@@ -54,5 +54,10 @@ public class CategoryFragment extends Fragment implements CategoryViewListener {
     @Override
     public void displayError() {
         Toast.makeText(getActivity(), R.string.connect_to_server_failed, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemClick(Category category) {
+        Toast.makeText(getActivity(), "click " + category.getName(), Toast.LENGTH_SHORT).show();
     }
 }

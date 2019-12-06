@@ -35,14 +35,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class HomeScreenActivity extends AppCompatActivity implements
-        NavigationView.OnNavigationItemSelectedListener,
-        TableAdapter.OnCallBack, CategoryAdapter.OnCallBack{
+        NavigationView.OnNavigationItemSelectedListener
+{
 
     private Fragment tableFragment, menuFragment, userFragment;
     private FragmentTransaction fragmentTransaction;
+    private TextView txtUsername, txtFullname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +52,14 @@ public class HomeScreenActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_home_screen);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -78,6 +80,14 @@ public class HomeScreenActivity extends AppCompatActivity implements
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        View headerView = navigationView.getHeaderView(0);
+        txtUsername = headerView.findViewById(R.id.txt_username);
+        txtFullname = headerView.findViewById(R.id.txt_fullname);
+
+        txtUsername.setText("Nhanvien1");
+        txtFullname.setText("Nguyen Van Teo ");
 
         showTableFragment();
     }
@@ -147,16 +157,4 @@ public class HomeScreenActivity extends AppCompatActivity implements
         fragmentTransaction.commit();
     }
 
-    @Override
-    public void onItemClick(Table table) {
-        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.fragment_container, new CategoryFragment());
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-    }
-
-    @Override
-    public void onItemClick(Category category) {
-        Toast.makeText(this, "click " + category.getName(), Toast.LENGTH_SHORT).show();
-    }
 }

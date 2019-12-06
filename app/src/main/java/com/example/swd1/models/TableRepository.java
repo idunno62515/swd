@@ -1,5 +1,6 @@
 package com.example.swd1.models;
 
+import com.example.swd1.models.entities.Floor;
 import com.example.swd1.models.entities.Table;
 import com.example.swd1.models.remote.RetrofitClient;
 import com.example.swd1.models.services.TableService;
@@ -23,17 +24,17 @@ public class TableRepository {
 
     public void getListTable() {
         TableService callApi = retrofitClient.create(TableService.class);
-        Call<List<Table>> call = callApi.getListTable();
-        call.enqueue(new Callback<List<Table>>() {
+        Call<List<Floor>> call = callApi.getListFloorAndTable();
+        call.enqueue(new Callback<List<Floor>>() {
             @Override
-            public void onResponse(Call<List<Table>> call, Response<List<Table>> response) {
+            public void onResponse(Call<List<Floor>> call, Response<List<Floor>> response) {
                 if (response.isSuccessful()) {
                     callBack.onGetListTableSuccess(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Table>> call, Throwable t) {
+            public void onFailure(Call<List<Floor>> call, Throwable t) {
                 callBack.onGetListTableFail();
             }
         });
