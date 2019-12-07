@@ -1,5 +1,7 @@
 package com.example.swd1.models;
 
+import androidx.annotation.Nullable;
+
 import com.example.swd1.models.entities.Category;
 import com.example.swd1.models.entities.Table;
 import com.example.swd1.models.remote.RetrofitClient;

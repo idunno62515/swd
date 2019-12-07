@@ -1,24 +1,25 @@
 package com.example.swd1.views.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swd1.R;
+import com.example.swd1.utils.CommonConstant;
 import com.example.swd1.models.entities.Floor;
 import com.example.swd1.models.entities.Table;
 import com.example.swd1.presenters.TablePresenter;
 import com.example.swd1.views.TableViewListener;
+import com.example.swd1.views.activities.MasterCategoryActivity;
 import com.example.swd1.views.adapters.FloorAdapter;
 import com.example.swd1.views.adapters.TableAdapter;
 
@@ -66,7 +67,8 @@ public class TableFragment extends Fragment implements TableViewListener, TableA
 
     @Override
     public void onItemClick(Table table) {
-        Toast.makeText(getActivity(), "click " + table.getText(), Toast.LENGTH_SHORT).show();
-
+        Intent intent = new Intent();
+        intent.putExtra(CommonConstant.TABLE_ID, table.getId());
+        startActivity(new Intent(getActivity(), MasterCategoryActivity.class));
     }
 }
