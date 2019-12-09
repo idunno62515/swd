@@ -25,6 +25,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     private List<Category> listCate;
     private Context context;
+    private RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
 
     public CategoryAdapter(List<Category> listCate, Context context) {
         this.listCate = listCate;
@@ -56,6 +57,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         holder.lvProduct.setAdapter(productLinearAdapter);
 
         holder.lvProduct.setNestedScrollingEnabled(false);
+
+        holder.lvProduct.setRecycledViewPool(viewPool);
 
         holder.btnMoreProduct.setOnClickListener(new View.OnClickListener() {
             @Override
