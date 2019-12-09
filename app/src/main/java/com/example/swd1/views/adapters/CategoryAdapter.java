@@ -1,6 +1,7 @@
 package com.example.swd1.views.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.swd1.R;
 import com.example.swd1.models.entities.Category;
 import com.example.swd1.models.entities.Product;
+import com.example.swd1.utils.CommonConstant;
+import com.example.swd1.views.activities.ProductListActivity;
 
 import java.util.List;
 
@@ -64,6 +67,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "Button more : " +cate.getName() , Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(context, ProductListActivity.class);
+                intent.putExtra(CommonConstant.CATE_ID, cate.getCode());
+                context.startActivity(intent);
+
             }
         });
 

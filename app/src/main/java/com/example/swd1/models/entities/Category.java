@@ -12,7 +12,7 @@ public class Category implements Serializable {
     @Expose
     private Integer id;
 
-    @SerializedName("code")
+    @SerializedName("cateCode")
     @Expose
     private Integer code;
 
