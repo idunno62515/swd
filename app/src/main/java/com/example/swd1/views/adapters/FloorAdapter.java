@@ -41,6 +41,7 @@ public class FloorAdapter extends RecyclerView.Adapter<FloorAdapter.ViewHolder> 
         holder.txtFloorName.setText("Tầng " + (paren.getFloor() == 0 ? "Trệt" : paren.getFloor()));
         List<Table> listTable = paren.getTables();
         TableAdapter tableAdapter = new TableAdapter(listTable, (TableAdapter.OnCallBack) this.fragment);
+
         holder.lvTable.setHasFixedSize(true);
         holder.lvTable.setLayoutManager(new GridLayoutManager(this.fragment.getActivity(), 3));
         holder.lvTable.setAdapter(tableAdapter);

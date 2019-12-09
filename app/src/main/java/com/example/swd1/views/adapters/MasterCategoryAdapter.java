@@ -34,7 +34,9 @@ public class MasterCategoryAdapter extends RecyclerView.Adapter<MasterCategoryAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final MasterCategory masterCate = list.get(position);
+
         holder.txtMastercateName.setText(masterCate.getName());
+
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,6 +45,7 @@ public class MasterCategoryAdapter extends RecyclerView.Adapter<MasterCategoryAd
                 }
             }
         });
+
 
     }
 

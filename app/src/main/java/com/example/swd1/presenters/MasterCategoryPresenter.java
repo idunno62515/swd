@@ -23,7 +23,7 @@ public class MasterCategoryPresenter implements MasterCategoryPresenterListener 
 
     @Override
     public void onGetListMasterCateSuccess(List<MasterCategory> list) {
-        callback.displayMasterCategory();
+        callback.displayMasterCategory(list);
     }
 
     @Override

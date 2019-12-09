@@ -27,9 +27,9 @@ public class CategoryRepository {
         this.retrofitClient = RetrofitClient.getClient();
     }
 
-    public void getListCategory() {
+    public void getListCategory(int mastecate) {
         CategoryService callApi = retrofitClient.create(CategoryService.class);
-        Call<List<Category>> call = callApi.getListCategory();
+        Call<List<Category>> call = callApi.getListCategory(mastecate);
         call.enqueue(new Callback<List<Category>>() {
             @Override
             public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {

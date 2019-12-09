@@ -20,7 +20,7 @@ import com.example.swd1.views.adapters.CategoryAdapter;
 
 import java.util.List;
 
-public class CategoryFragment extends Fragment implements CategoryViewListener, CategoryAdapter.OnCallBack {
+public class CategoryFragment extends Fragment implements CategoryViewListener {
 
     private RecyclerView lvCate;
     private CategoryPresenter presenter;
@@ -41,23 +41,18 @@ public class CategoryFragment extends Fragment implements CategoryViewListener, 
         lvCate.setHasFixedSize(true);
         lvCate.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        presenter.loadCategory();
+        presenter.loadCategory(-1);
 
     }
 
+
     @Override
-    public void displayCategory(List<Category> list) {
-        CategoryAdapter categoryAdapter = new CategoryAdapter(list, (CategoryAdapter.OnCallBack) getActivity());
-        lvCate.setAdapter(categoryAdapter);
+    public void displayCategory(List<Category> list) throws UnsupportedOperationException {
+
     }
 
     @Override
     public void displayError() {
-        Toast.makeText(getActivity(), R.string.connect_to_server_failed, Toast.LENGTH_SHORT).show();
-    }
 
-    @Override
-    public void onItemClick(Category category) {
-        Toast.makeText(getActivity(), "click " + category.getName(), Toast.LENGTH_SHORT).show();
     }
 }

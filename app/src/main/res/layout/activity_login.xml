@@ -11,45 +11,42 @@
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="322dp"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:layout_margin="32dp"
         android:src="@drawable/app_icon"></ImageView>
 
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_login_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txt_login_username"
+        <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:hint="Ten dang nhap"
+            android:text="thien"
+            android:textColorHint="@color/black"></EditText>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Ten dang nhap"
-                android:text="thien"
-                android:textColorHint="@color/black"></EditText>
-
-        </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txt_login_password"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_login_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:hint="Mat khau"
+            android:textColorHint="@color/black">
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Mat khau"
-                android:textColorHint="@color/black">
+        </EditText>
 
-            </EditText>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <Button

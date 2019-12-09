@@ -15,8 +15,8 @@ public class CategoryPresenter implements CategoryPresenterListener{
         this.repository = new CategoryRepository(this);
     }
 
-    public void loadCategory() {
-        repository.getListCategory();
+    public void loadCategory(int masteCate) {
+        repository.getListCategory(masteCate);
     }
 
     @Override

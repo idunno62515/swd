@@ -13,13 +13,14 @@ import com.example.swd1.R;
 import com.example.swd1.models.entities.Category;
 import com.example.swd1.models.entities.Table;
 import com.example.swd1.views.adapters.CategoryAdapter;
+import com.example.swd1.views.adapters.ProductLinearAdapter;
 import com.example.swd1.views.adapters.TableAdapter;
 import com.example.swd1.views.fragments.TableFragment;
 import com.example.swd1.views.fragments.CategoryFragment;
 import com.example.swd1.views.fragments.AccountFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity implements TableAdapter.OnCallBack, CategoryAdapter.OnCallBack {
+public class MainActivity extends AppCompatActivity implements TableAdapter.OnCallBack, ProductLinearAdapter.OnCallback {
 
     private Fragment homeFragment, menuFragment, userFragment;
     private FragmentTransaction fragmentTransaction;
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements TableAdapter.OnCa
     }
 
     @Override
-    public void onItemClick(Category category) {
-        Toast.makeText(this, "click " + category.getName(), Toast.LENGTH_SHORT).show();
+    public void onItemClick(int id) {
+        Toast.makeText(this, "click " + id, Toast.LENGTH_SHORT).show();
     }
 }

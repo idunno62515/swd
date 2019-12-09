@@ -1,27 +1,34 @@
 package com.example.swd1.views.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swd1.R;
 import com.example.swd1.models.entities.Category;
+import com.example.swd1.models.entities.Product;
 
 import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
 
     private List<Category> listCate;
-    private OnCallBack callBack;
+    private Context context;
 
-    public CategoryAdapter(List<Category> listCate, OnCallBack callBack) {
+    public CategoryAdapter(List<Category> listCate, Context context) {
         this.listCate = listCate;
-        this.callBack = callBack;
+        this.context = context;
     }
 
     @NonNull
@@ -32,17 +39,31 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final CategoryAdapter.ViewHolder holder, int position) {
         final Category cate = listCate.get(position);
         holder.txtCateName.setText(cate.getName());
-        holder.item.setOnClickListener(new View.OnClickListener() {
+
+        List<Product> listProduct = cate.getProducts();
+
+        ProductLinearAdapter productLinearAdapter = new ProductLinearAdapter(
+                listProduct,
+                (ProductLinearAdapter.OnCallback) context
+        );
+
+
+        holder.lvProduct.setHasFixedSize(true);
+        holder.lvProduct.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+        holder.lvProduct.setAdapter(productLinearAdapter);
+
+        holder.lvProduct.setNestedScrollingEnabled(false);
+
+        holder.btnMoreProduct.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                if (callBack != null) {
-                    callBack.onItemClick(cate);
-                }
+            public void onClick(View view) {
+                Toast.makeText(context, "Button more : " +cate.getName() , Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     @Override
@@ -51,19 +72,16 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        CardView item;
         TextView txtCateName;
-
+        RecyclerView lvProduct;
+        ImageButton btnMoreProduct;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            item = itemView.findViewById(R.id.cate_item);
-            txtCateName = itemView.findViewById(R.id.txt_cateName);
+            txtCateName = itemView.findViewById(R.id.txt_cate_name);
+            lvProduct = itemView.findViewById(R.id.lv_product_horizontal);
+            btnMoreProduct = itemView.findViewById(R.id.btn_more_product);
         }
     }
 
-
-    public interface OnCallBack {
-        void onItemClick(Category category);
-    }
 
 }
