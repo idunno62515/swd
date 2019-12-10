@@ -74,7 +74,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtCateName;
         RecyclerView lvProduct;
-        ImageButton btnMoreProduct;
+        Button btnMoreProduct;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtCateName = itemView.findViewById(R.id.txt_cate_name);

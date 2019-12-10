@@ -1,43 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:cardUseCompatPadding="true"
-    app:cardCornerRadius="5dp">
-
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="2dp">
-
             <TextView
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
                 android:id="@+id/txt_cate_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="1dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center_vertical"
                 android:layout_toLeftOf="@id/btn_more_product"
                 android:text="Cate sample"
+                android:textStyle="bold"
                 android:textSize="18sp"></TextView>
 
-            <ImageButton
+            <Button
+                android:layout_marginLeft="320dp"
+                android:textAllCaps="false"
+                android:background="@android:color/transparent"
+                android:textSize="14sp"
+                android:text="Xem thêm"
                 android:id="@+id/btn_more_product"
                 android:layout_width="wrap_content"
-                android:layout_height="36dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:background="@color/white"
-                android:src="@drawable/ic_arrow_forward_black_24dp"></ImageButton>
-        </RelativeLayout>
+                android:layout_height="20dp"
+                android:textColor="@color/colorReadAll"
+                android:layout_alignParentEnd="true"></Button>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/lv_product_horizontal"
@@ -45,6 +40,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:orientation="horizontal"></androidx.recyclerview.widget.RecyclerView>
+    <View
+        android:layout_margin="14dp"
+        android:layout_width="360dp"
+        android:layout_gravity="center"
+        android:layout_height="1dp"
+        android:background="@color/colorLine"/>
 
     </LinearLayout>
-</androidx.cardview.widget.CardView>

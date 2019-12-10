@@ -3,6 +3,7 @@ package com.example.swd1.views.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -38,7 +39,7 @@ public class ProductLinearAdapter extends RecyclerView.Adapter<ProductLinearAdap
         final Product product = list.get(position);
 
         holder.txtProductName.setText(product.getProductName());
-        Picasso.get().load("https://classiarius.net/wp-content/uploads/2019/03/tokyo-a-1000-dollar-burger-for-a-royal-celebration.jpeg")
+        Picasso.get().load("https://pizzatriangle.co.uk/Images/PZ0003.png")
                 .into(holder.imgvProduct);
 
 
@@ -47,6 +48,15 @@ public class ProductLinearAdapter extends RecyclerView.Adapter<ProductLinearAdap
             public void onClick(View view) {
                 if (listener != null) {
                     listener.onItemClick(product.getProductId());
+                }
+            }
+        });
+
+        holder.btnAddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener != null) {
+                    listener.onAddToCartClick(product);
                 }
             }
         });
@@ -63,6 +73,7 @@ public class ProductLinearAdapter extends RecyclerView.Adapter<ProductLinearAdap
         ImageView imgvProduct;
         TextView txtProductName;
         View layoutItemProduct;
+        Button btnAddToCart;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -70,11 +81,14 @@ public class ProductLinearAdapter extends RecyclerView.Adapter<ProductLinearAdap
             imgvProduct = itemView.findViewById(R.id.imgv_product);
             txtProductName = itemView.findViewById(R.id.txt_product_name);
             layoutItemProduct = itemView.findViewById(R.id.layout_item_product);
+            btnAddToCart = itemView.findViewById(R.id.btnAddToCart);
         }
     }
 
     public interface OnCallback {
         void onItemClick(int productId);
+        void onAddToCartClick(Product product);
+
     }
 
 }
