@@ -20,7 +20,7 @@ import com.example.swd1.views.fragments.CategoryFragment;
 import com.example.swd1.views.fragments.AccountFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity implements TableAdapter.OnCallBack, ProductLinearAdapter.OnCallback {
+public class MainActivity extends AppCompatActivity implements TableAdapter.OnCallBack {
 
     private Fragment homeFragment, menuFragment, userFragment;
     private FragmentTransaction fragmentTransaction;
@@ -92,8 +92,5 @@ public class MainActivity extends AppCompatActivity implements TableAdapter.OnCa
         fragmentTransaction.commit();
     }
 
-    @Override
-    public void onItemClick(int id) {
-        Toast.makeText(this, "click " + id, Toast.LENGTH_SHORT).show();
-    }
+
 }

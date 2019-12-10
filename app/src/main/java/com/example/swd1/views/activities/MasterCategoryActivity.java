@@ -47,7 +47,7 @@ public class MasterCategoryActivity extends AppCompatActivity implements MasterC
 
         presenter = new MasterCategoryPresenter(this);
 
-        GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 1);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
@@ -57,7 +57,7 @@ public class MasterCategoryActivity extends AppCompatActivity implements MasterC
                         case CommonConstant.DEFAULT_COLUMN_COUNT:
                             return 1;
                         case CommonConstant.FULL_WIDTH_COLUMN:
-                            return 2;
+                            return 1;
                         default:
                             return -1;
                     }
