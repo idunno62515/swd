@@ -11,13 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.activities.ProductListActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
+        <activity android:name=".views.activities.CartActivity"></activity>
+        <activity
+            android:name=".views.activities.ProductListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".views.activities.CategoryActivity" />
         <activity
             android:name=".views.activities.MasterCategoryActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".views.activities.HomeScreenActivity"
             android:theme="@style/AppTheme.NoActionBar">

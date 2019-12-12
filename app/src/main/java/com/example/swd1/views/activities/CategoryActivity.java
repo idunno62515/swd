@@ -81,4 +81,9 @@ public class CategoryActivity extends AppCompatActivity implements CategoryViewL
         txtPrice.setText(product.getPrice() + "");
         bottomSheetDialog.show();
     }
+
+    public void clickToCart(View view) {
+        Intent intent = new Intent(this, CartActivity.class);
+        startActivity(intent);
+    }
 }
