@@ -1,10 +1,12 @@
 package com.example.swd1.views.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -36,9 +38,10 @@ public class CategoryActivity extends AppCompatActivity implements CategoryViewL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-        presenter = new CategoryPresenter(this);
 
         initView();
+
+        presenter = new CategoryPresenter(this);
 
         Intent intent = getIntent();
         int masterCate = intent.getIntExtra(CommonConstant.MASTER_CATE_ID, -1);
@@ -48,6 +51,16 @@ public class CategoryActivity extends AppCompatActivity implements CategoryViewL
     }
 
     private void initView() {
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        if (Build.VERSION.SDK_INT >= 21) {
+            this.getWindow().setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));
+        }
+
         bottomSheetDialog = new BottomSheetDialog(CategoryActivity.this);
         bottomSheetDialogView = getLayoutInflater().inflate(R.layout.bottom_sheet_layout, null);
         bottomSheetDialog.setContentView(bottomSheetDialogView);
@@ -80,5 +93,11 @@ public class CategoryActivity extends AppCompatActivity implements CategoryViewL
         TextView txtPrice = bottomSheetDialogView.findViewById(R.id.txt_modal_product_price);
         txtPrice.setText(product.getPrice() + "");
         bottomSheetDialog.show();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 }

@@ -32,6 +32,15 @@ public class MasterCategoryActivity extends AppCompatActivity implements MasterC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_master_category);
 
+        initView();
+
+        presenter = new MasterCategoryPresenter(this);
+
+        presenter.loadMasterCate();
+    }
+
+    private void initView() {
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Ban so 15");
         setSupportActionBar(toolbar);
@@ -43,9 +52,7 @@ public class MasterCategoryActivity extends AppCompatActivity implements MasterC
             this.getWindow().setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));
         }
 
-        initView();
-
-        presenter = new MasterCategoryPresenter(this);
+        lvMasterCate = findViewById(R.id.lv_master_category);
 
         GridLayoutManager layoutManager = new GridLayoutManager(this, 1);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
@@ -69,12 +76,6 @@ public class MasterCategoryActivity extends AppCompatActivity implements MasterC
 
         lvMasterCate.setLayoutManager(layoutManager);
         lvMasterCate.addItemDecoration(new SpaceItemDecoration(8));
-
-        presenter.loadMasterCate();
-    }
-
-    private void initView() {
-        lvMasterCate = findViewById(R.id.lv_master_category);
     }
 
     @Override

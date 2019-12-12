@@ -50,4 +50,7 @@ dependencies {
 
     implementation 'com.nex3z:notification-badge:1.0.2'
 
+    annotationProcessor 'androidx.room:room-compiler:2.1.0-beta01'
+    implementation 'androidx.room:room-rxjava2:2.1.0-beta01'
+
 }
