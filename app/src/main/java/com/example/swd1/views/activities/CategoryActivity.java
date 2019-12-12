@@ -100,4 +100,9 @@ public class CategoryActivity extends AppCompatActivity implements CategoryViewL
         finish();
         return true;
     }
+
+    public void clickToCart(View view) {
+        Intent intent = new Intent(this, CartActivity.class);
+        startActivity(intent);
+    }
 }
