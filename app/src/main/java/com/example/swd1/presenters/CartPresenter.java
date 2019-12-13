@@ -2,24 +2,22 @@ package com.example.swd1.presenters;
 
 import android.content.Context;
 
-import androidx.fragment.app.Fragment;
-
-import com.example.swd1.models.CartRepository;
+import com.example.swd1.models.CartProvider;
 import com.example.swd1.models.database.CartItem;
 import com.example.swd1.views.CartViewListener;
 
 public class CartPresenter implements CartPresenterListener {
 
     private CartViewListener callBack;
-    private CartRepository cartRepository;
+    private CartProvider cartProvider;
 
     public CartPresenter(CartViewListener callBack, Context context) {
         this.callBack = callBack;
-        this.cartRepository = new CartRepository(this, context);
+        this.cartProvider = new CartProvider(this, context);
     }
 
     public void insertCart(CartItem cartItem) {
-        cartRepository.insert(cartItem);
+        cartProvider.insert(cartItem);
     }
 
     @Override
@@ -28,6 +26,6 @@ public class CartPresenter implements CartPresenterListener {
     }
 
     public void getAllCart() {
-        cartRepository.getAllCart();
+        cartProvider.getAllCart();
     }
 }

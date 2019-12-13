@@ -1,5 +1,7 @@
 package com.example.swd1.utils;
 
+import java.text.DecimalFormat;
+
 public  class CommonConstant {
     public static final String TABLE_ID = "table_id";
     public static final int DEFAULT_COLUMN_COUNT = 0;
@@ -13,7 +15,13 @@ public  class CommonConstant {
     public static final String STAFF_NAME = "staff_name";
 
 
+    public static final int INVALID_INT = -1;
+    public static final String CURRENT_ORDER_ID = "current_order_id";
 
+    public static String currencyFormat(double input) {
+        DecimalFormat formatter = new DecimalFormat("#,###,###");
+        return formatter.format(input)+"đ";
+    }
 }
 
 

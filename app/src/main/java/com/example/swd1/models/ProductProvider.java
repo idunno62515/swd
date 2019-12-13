@@ -15,11 +15,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class ProductRepository {
+public class ProductProvider {
     private Retrofit retrofitClient;
     private ProductListPresenterListener callback;
 
-    public ProductRepository(ProductListPresenterListener callback) {
+    public ProductProvider(ProductListPresenterListener callback) {
         this.callback = callback;
         retrofitClient = RetrofitClient.getClient();
     }

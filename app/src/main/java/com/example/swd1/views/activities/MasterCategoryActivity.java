@@ -31,6 +31,7 @@ public class MasterCategoryActivity extends BaseActivity implements MasterCatego
     private RecyclerView lvMasterCate;
     private MasterCategoryPresenter presenter;
     private MasterCategoryAdapter adapter;
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +44,9 @@ public class MasterCategoryActivity extends BaseActivity implements MasterCatego
 
         presenter.loadMasterCate();
 
-        SharedPreferences preferences = getSharedPreferences(CommonConstant.APP_SHARE_PREFERENCE, MODE_PRIVATE);
+        preferences = getSharedPreferences(CommonConstant.APP_SHARE_PREFERENCE, MODE_PRIVATE);
 
-        createSnackBar(preferences.getInt(CommonConstant.CURRENT_TABLE_ID,-1), 0);
+        createSnackBar(preferences.getInt(CommonConstant.CURRENT_TABLE_ID, -1), 0);
     }
 
     @Override
@@ -53,7 +54,7 @@ public class MasterCategoryActivity extends BaseActivity implements MasterCatego
         super.onResume();
         SharedPreferences preferences = getSharedPreferences(CommonConstant.APP_SHARE_PREFERENCE, MODE_PRIVATE);
 
-        createSnackBar(preferences.getInt(CommonConstant.CURRENT_TABLE_ID,-1), 0);
+        createSnackBar(preferences.getInt(CommonConstant.CURRENT_TABLE_ID, -1), 0);
     }
 
     private void initView() {
@@ -85,7 +86,7 @@ public class MasterCategoryActivity extends BaseActivity implements MasterCatego
 
         lvMasterCate = findViewById(R.id.lv_master_category);
 
-        GridLayoutManager layoutManager = new GridLayoutManager(this, 1);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
@@ -95,7 +96,7 @@ public class MasterCategoryActivity extends BaseActivity implements MasterCatego
                         case CommonConstant.DEFAULT_COLUMN_COUNT:
                             return 1;
                         case CommonConstant.FULL_WIDTH_COLUMN:
-                            return 1;
+                            return 2;
                         default:
                             return -1;
                     }

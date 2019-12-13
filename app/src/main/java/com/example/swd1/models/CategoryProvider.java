@@ -16,13 +16,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class CategoryRepository {
+public class CategoryProvider {
 
     private CategoryPresenterListener callBack;
 
     private Retrofit retrofitClient;
 
-    public CategoryRepository(CategoryPresenterListener callBack) {
+    public CategoryProvider(CategoryPresenterListener callBack) {
         this.callBack = callBack;
         this.retrofitClient = RetrofitClient.getClient();
     }

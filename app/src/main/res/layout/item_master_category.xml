@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/item_mastercate"
-    android:layout_margin="2dp"
-    android:layout_height="65dp">
+    android:layout_marginTop="4dp"
+    app:cardElevation="2dp"
+    android:layout_height="80dp">
 
     <ImageView
         android:src="@drawable/cate_item"
@@ -37,4 +39,4 @@
             android:src="@drawable/next1"/>
     </RelativeLayout>
 
-</FrameLayout>
+</androidx.cardview.widget.CardView>

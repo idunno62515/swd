@@ -2,22 +2,20 @@ package com.example.swd1.presenters;
 
 import android.content.Context;
 
-import com.example.swd1.models.CartListRepository;
-import com.example.swd1.models.CartRepository;
+import com.example.swd1.models.CartListProvider;
 import com.example.swd1.models.database.CartItem;
 import com.example.swd1.views.CartListViewListener;
-import com.example.swd1.views.CartViewListener;
 
 import java.util.List;
 
 public class CartListPresenter implements CartListPresenterListener{
 
     private CartListViewListener callBack;
-    private CartListRepository cartListRepository;
+    private CartListProvider cartListProvider;
 
     public CartListPresenter(CartListViewListener callBack, Context context) {
         this.callBack = callBack;
-        this.cartListRepository = new CartListRepository(this, context);
+        this.cartListProvider = new CartListProvider(this, context);
     }
 
 
@@ -42,14 +40,14 @@ public class CartListPresenter implements CartListPresenterListener{
     }
 
     public void getAllCart() {
-        cartListRepository.getAllCart();
+        cartListProvider.getAllCart();
     }
 
     public void getCartByTableId(int tableId) {
-        cartListRepository.getCartByTableId(tableId);
+        cartListProvider.getCartByTableId(tableId);
     }
 
     public void submitOrder(List<CartItem> listCart) {
-        cartListRepository.submitOrder(listCart);
+        cartListProvider.submitOrder(listCart);
     }
 }

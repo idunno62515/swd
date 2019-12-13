@@ -1,8 +1,7 @@
 package com.example.swd1.presenters;
 
-import com.example.swd1.models.TableRepository;
+import com.example.swd1.models.TableProvider;
 import com.example.swd1.models.entities.Floor;
-import com.example.swd1.models.entities.Table;
 import com.example.swd1.views.TableViewListener;
 
 import java.util.List;
@@ -10,15 +9,15 @@ import java.util.List;
 public class TablePresenter implements TablePresenterListener {
 
     private TableViewListener callBack;
-    private TableRepository repository;
+    private TableProvider provider;
 
     public TablePresenter(TableViewListener tableViewListener) {
         this.callBack = tableViewListener;
-        repository = new TableRepository(this);
+        provider = new TableProvider(this);
     }
 
     public void loadTableList() {
-        repository.getListTable();
+        provider.getListTable();
     }
 
     @Override

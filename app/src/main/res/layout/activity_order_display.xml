@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".views.activities.ListCartActivity">
+    tools:context=".views.activities.OrderDisplayActivity">
 
-    <include
-        layout="@layout/app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        ></include>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +22,7 @@
             android:layout_height="0dp">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/lv_cart_list"
+                android:id="@+id/lv_order"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -54,6 +49,7 @@
                     android:weightSum="10">
 
                     <Button
+                        android:id="@+id/btn_order_add_more"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
@@ -65,6 +61,7 @@
                         android:textSize="18dp" />
 
                     <TextView
+                        android:id="@+id/txt_order_total"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -78,11 +75,11 @@
             </androidx.cardview.widget.CardView>
 
             <Button
-                android:id="@+id/btn_complete_order"
+                android:id="@+id/btn_order_pay"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/button_color"
-                android:text="Hoàn tất"
+                android:text="Thanh toán"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="21dp" />

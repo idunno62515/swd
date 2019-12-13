@@ -1,6 +1,6 @@
 package com.example.swd1.presenters;
 
-import com.example.swd1.models.MasterCategoryRepository;
+import com.example.swd1.models.MasterCategoryProvider;
 import com.example.swd1.models.entities.MasterCategory;
 import com.example.swd1.views.MasterCategoryViewListener;
 
@@ -9,16 +9,16 @@ import java.util.List;
 public class MasterCategoryPresenter implements MasterCategoryPresenterListener {
 
 
-    private MasterCategoryRepository repo;
+    private MasterCategoryProvider provider;
     private MasterCategoryViewListener callback;
 
     public MasterCategoryPresenter(MasterCategoryViewListener callback) {
         this.callback = callback;
-        this.repo = new MasterCategoryRepository(this);
+        this.provider = new MasterCategoryProvider(this);
     }
 
     public void loadMasterCate() {
-        repo.getListMasterCategory();
+        provider.getListMasterCategory();
     }
 
     @Override

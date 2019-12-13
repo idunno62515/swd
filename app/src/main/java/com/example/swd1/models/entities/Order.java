@@ -8,6 +8,12 @@ import java.util.List;
 
 public class Order implements Serializable {
 
+
+    @SerializedName("orderId")
+    @Expose
+    private int orderId;
+
+
     @SerializedName("totalAmount")
     @Expose
     private double totalAmount;
@@ -26,6 +32,14 @@ public class Order implements Serializable {
 
 
     public Order() {
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     public double getTotalAmount() {

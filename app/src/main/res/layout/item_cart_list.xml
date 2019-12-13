@@ -1,86 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
-    android:layout_margin="1dp"
-    android:orientation="horizontal"
-    android:padding="3dp">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:elevation="2dp"
 
-    <ImageView
-        android:id="@+id/imgv_cart_image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher">
-
-    </ImageView>
+    >
 
     <LinearLayout
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="10dp"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:padding="8dp">
 
-        <TextView
-            android:id="@+id/txt_cart_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lines="2"
-            android:text="Pizza"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@android:color/black"
-            android:textSize="21sp"
-            android:textStyle="bold">
+        <ImageView
+            android:id="@+id/imgv_cart_image"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher">
 
-        </TextView>
+        </ImageView>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
             <TextView
-                android:id="@+id/txt_cart_price"
+                android:id="@+id/txt_cart_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="20.000 đ"
-                android:textAlignment="textStart"
-                android:textSize="18sp">
+                android:fontFamily="sans-serif-light"
+                android:lines="2"
+                android:text="Pizza"
+                android:textColor="@android:color/black"
+                android:textSize="21sp"
+                android:textStyle="bold">
 
             </TextView>
-            <TextView
-                android:id="@+id/txt_cart_quantity"
-                android:layout_width="wrap_content"
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="x3"
-                android:textColor="@color/red"
-                android:textAlignment="center"
-                android:textSize="18sp">
+                android:orientation="horizontal">
 
-            </TextView>
+                <TextView
+                    android:id="@+id/txt_cart_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="20.000 đ"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/txt_cart_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="x3"
+                    android:textAlignment="center"
+                    android:textColor="@color/red"
+                    android:textSize="18sp">
+
+                </TextView>
+            </LinearLayout>
+
+
         </LinearLayout>
 
+        <ImageButton
+            android:id="@+id/btnEditCart"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/edit"
+            android:scaleType="centerCrop" />
 
+        <ImageButton
+            android:id="@+id/btnDeleteCart"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/recycling"
+            android:scaleType="centerCrop" />
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/btnEditCart"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="12dp"
-        android:background="@drawable/edit"
-        android:scaleType="centerCrop" />
 
-    <ImageButton
-        android:id="@+id/btnDeleteCart"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="16dp"
-        android:background="@drawable/recycling"
-        android:scaleType="centerCrop" />
-</LinearLayout>
+</androidx.cardview.widget.CardView>

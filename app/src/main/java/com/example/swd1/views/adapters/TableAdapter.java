@@ -1,5 +1,7 @@
 package com.example.swd1.views.adapters;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,10 +33,18 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.ViewHolder> 
         return new ViewHolder(itemView);
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull TableAdapter.ViewHolder holder, int position) {
         final Table table = listTable.get(position);
-        holder.txtTableName.setText(table.getText() + "\n" + (table.getStatus() ==1 ? "Có khách":"Trống"));
+
+        holder.txtTableName.setText("Bàn " + table.getNumber() + "\n\n" + (table.getStatus() == 1 ? "Có khách" : "Trống"));
+
+        if (table.getStatus() == 1) {
+            holder.txtTableName.setBackgroundColor(Color.parseColor("#FE9C2B"));
+            holder.txtTableName.setTextColor(Color.parseColor("#FFFFFF"));
+        }
+
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,6 +63,7 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtTableName;
         CardView item;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtTableName = itemView.findViewById(R.id.txt_table_name);

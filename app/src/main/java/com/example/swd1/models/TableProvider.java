@@ -13,11 +13,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class TableRepository {
+public class TableProvider {
     private Retrofit retrofitClient;
     private TablePresenterListener callBack;
 
-    public TableRepository(TablePresenterListener presenter) {
+    public TableProvider(TablePresenterListener presenter) {
         this.retrofitClient = RetrofitClient.getClient();
         callBack = presenter;
     }

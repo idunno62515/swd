@@ -23,7 +23,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CartListRepository {
+public class CartListProvider {
 
 
     private CartListPresenterListener callBack;
@@ -33,7 +33,7 @@ public class CartListRepository {
     private Context context;
     private OrderService orderService;
 
-    public CartListRepository(CartListPresenterListener callBack, @NonNull Context context) {
+    public CartListProvider(CartListPresenterListener callBack, @NonNull Context context) {
         this.callBack = callBack;
         this.context = context;
 

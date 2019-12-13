@@ -31,6 +31,10 @@ public class OrderDetail implements Serializable {
     @Expose
     private String notes;
 
+    @SerializedName("status")
+    @Expose
+    private int status;
+
     @SerializedName("unitPrice")
     @Expose
     private double unitPrice;
@@ -84,6 +88,14 @@ public class OrderDetail implements Serializable {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public double getUnitPrice() {

@@ -3,13 +3,14 @@
     <color name="colorPrimary">#FE9C2B</color>
     <color name="colorPrimaryDark">#FF8B0F</color>
     <color name="colorAccent">#FE9C2B</color>
-    <color name="colorPrice">#F3339E22</color>
+    <color name="colorPrice">#1AA004</color>
     <color name="colorAdd">#F7E64F1F</color>
     <color name="colorReadAll">#D7C01FCC</color>
-    <color name="colorLine">#79242724</color>
+    <color name="colorLine">#8A8989</color>
 
     <color name="button_color">#F2F5702E</color>
     <color name="cart_color">#F3DD4116</color>
+    <color name="white">#FFFFFF</color>
 
 
 

@@ -14,12 +14,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class MasterCategoryRepository {
+public class MasterCategoryProvider {
     private Retrofit retrofitClient;
     private MasterCategoryPresenterListener callback;
 
 
-    public MasterCategoryRepository(MasterCategoryPresenterListener callback) {
+    public MasterCategoryProvider(MasterCategoryPresenterListener callback) {
         this.callback = callback;
         this.retrofitClient = RetrofitClient.getClient();
     }

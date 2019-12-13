@@ -13,7 +13,7 @@ import com.example.swd1.utils.CommonConstant;
 
 import java.util.List;
 
-public class CartRepository {
+public class CartProvider {
 
 
     private CartPresenterListener callBack;
@@ -22,7 +22,7 @@ public class CartRepository {
     private List<CartItem> listCart;
     private Context context;
 
-    public CartRepository(CartPresenterListener callBack, @NonNull Context context) {
+    public CartProvider(CartPresenterListener callBack, @NonNull Context context) {
         this.callBack = callBack;
         this.context = context;
 
