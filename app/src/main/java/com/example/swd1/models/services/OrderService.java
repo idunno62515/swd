@@ -18,6 +18,6 @@ public interface OrderService {
     Call<Order> GetOrderInTable(@Query("tableId") int tableId);
 
     @PATCH("orders?")
-    Call<Void> ChangeOrderStatus(@Query("id") int id);
+    Call<Boolean> ChangeOrderStatus(@Query("id") int id);
 
 }

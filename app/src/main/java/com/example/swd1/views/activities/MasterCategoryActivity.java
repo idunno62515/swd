@@ -40,7 +40,9 @@ public class MasterCategoryActivity extends BaseActivity implements MasterCatego
 
         initView();
 
-        presenter = new MasterCategoryPresenter(this);
+        createToolbar();
+
+        presenter = new MasterCategoryPresenter(this, this);
 
         presenter.loadMasterCate();
 
@@ -52,18 +54,14 @@ public class MasterCategoryActivity extends BaseActivity implements MasterCatego
     @Override
     protected void onResume() {
         super.onResume();
-        SharedPreferences preferences = getSharedPreferences(CommonConstant.APP_SHARE_PREFERENCE, MODE_PRIVATE);
+        preferences = getSharedPreferences(CommonConstant.APP_SHARE_PREFERENCE, MODE_PRIVATE);
 
         createSnackBar(preferences.getInt(CommonConstant.CURRENT_TABLE_ID, -1), 0);
     }
 
     private void initView() {
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Ban so 15");
-        setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         if (Build.VERSION.SDK_INT >= 21) {
@@ -129,9 +127,5 @@ public class MasterCategoryActivity extends BaseActivity implements MasterCatego
         startActivity(intent);
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return true;
-    }
+
 }

@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface TablePresenterListener {
     void onGetListTableSuccess(List<Floor> list);
-    void onGetListTableFail();
+    void onConnecFailed();
 }

@@ -9,18 +9,32 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import com.example.swd1.R;
 import com.google.android.material.snackbar.Snackbar;
 
 public class BaseActivity extends AppCompatActivity {
 
+    protected Toolbar toolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
+
+
     }
+
+    protected void createToolbar(){
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+
 
     protected void createSnackBar(int tableNumber, int numberCartItem) {
         String msg = "Bàn " + tableNumber + " : " + numberCartItem + " món chờ";
@@ -44,6 +58,12 @@ public class BaseActivity extends AppCompatActivity {
             rootView = getWindow().getDecorView().getRootView();
 
         return rootView;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 
 }

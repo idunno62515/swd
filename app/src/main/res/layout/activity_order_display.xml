@@ -18,7 +18,7 @@
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_weight="82"
+            android:layout_weight="85"
             android:layout_height="0dp">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -34,7 +34,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="18"
+            android:layout_weight="15"
             android:layout_gravity="bottom"
             android:orientation="vertical">
 
@@ -44,30 +44,16 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
+                    android:layout_height="50dp"
                     android:orientation="horizontal"
-                    android:weightSum="10">
-
-                    <Button
-                        android:id="@+id/btn_order_add_more"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="4"
-                        android:background="@drawable/radius_button_add_more_cart"
-                        android:text="Thêm món"
-                        android:textAllCaps="false"
-                        android:textColor="@color/cart_color"
-                        android:textSize="18dp" />
-
+                   >
                     <TextView
                         android:id="@+id/txt_order_total"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="6"
                         android:text="Tổng: 180000"
-                        android:textAlignment="textEnd"
+                        android:gravity="end"
+                        android:layout_gravity="center_vertical"
                         android:textColor="@color/colorPrice"
                         android:textSize="24dp"
                         android:textStyle="bold" />

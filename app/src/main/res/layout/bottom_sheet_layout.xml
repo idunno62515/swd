@@ -1,173 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="30dp"
     android:background="@drawable/background_bottom_sheet">
 
     <LinearLayout
-        android:padding="8dp"
-        android:orientation="vertical"
-        android:layout_marginTop="30dp"
-        android:layout_gravity="top|center"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_gravity="top|center"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:orientation="horizontal">
+
             <ImageButton
                 android:id="@+id/btnDismiss"
-                android:layout_margin="10dp"
-                android:background="@drawable/close"
-                android:layout_width="21dp"
-                android:layout_height="21dp"/>
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/close" />
+
             <TextView
-                android:textStyle="bold"
-                android:layout_marginRight="32dp"
-                android:gravity="center"
-                android:textSize="22dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Thêm"/>
+                android:layout_marginRight="28dp"
+                android:gravity="center"
+                android:text="Thêm"
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
         </LinearLayout>
+
         <LinearLayout
-            android:layout_margin="2dp"
+            android:padding="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/imgv_modal_product_image"
-                android:layout_width="135dp"
-                android:layout_height="135dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="1dp"
-                android:gravity="center"
-                android:src="@mipmap/ic_launcher"></ImageView>
-
-            <LinearLayout
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:fontFamily="sans-serif-light"
-                    android:id="@+id/txt_modal_product_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:lines="2"
-                    android:text="Name"
-                    android:textStyle="bold"
-                    android:textSize="18dp"></TextView>
-
-                <TextView
-                    android:layout_marginTop="8dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrice"
-                    android:id="@+id/txt_modal_product_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Price"
-                    android:textSize="20dp"></TextView>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/btn_modal_minus"
-                        android:layout_width="27dp"
-                        android:layout_height="27dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="90dp"
-                        android:background="@drawable/minus" />
-
-                    <TextView
-                        android:id="@+id/txt_modal_product_quantity"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="50dp"
-                        android:text="1"
-                        android:textSize="21dp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/btn_modal_plus"
-                        android:layout_width="27dp"
-                        android:layout_height="27dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/plus" />
-                </RelativeLayout>
-            </LinearLayout>
-        </LinearLayout>
-
-
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
+                <ImageView
+                    android:id="@+id/imgv_modal_product_image"
+                    android:layout_width="135dp"
+                    android:layout_height="135dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:src="@mipmap/ic_launcher"></ImageView>
 
-                <com.google.android.material.textfield.TextInputLayout
+                <LinearLayout
+                    android:padding="8dp"
                     android:layout_width="match_parent"
-                    android:hint="@string/ghi_chu"
-                    android:focusedByDefault="false"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txt_modal_note"
-                        android:layout_marginStart="5dp"
-                        android:focusedByDefault="false"
+                    <TextView
+                        android:id="@+id/txt_modal_product_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:lines="2"
+                        android:text="Name"
                         android:textSize="18dp"
-                        android:lines="4"
-                        android:inputType="textMultiLine"
-                        android:background="@drawable/without_underline"
+                        android:textStyle="bold"></TextView>
+
+                    <TextView
+                        android:id="@+id/txt_modal_product_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Price"
+                        android:textColor="@color/colorPrice"
+                        android:textSize="20dp"
+                        android:textStyle="bold"></TextView>
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
 
-                </com.google.android.material.textfield.TextInputLayout>
+                        <Button
+                            android:id="@+id/btn_modal_minus"
+                            android:layout_width="27dp"
+                            android:layout_height="27dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="90dp"
+                            android:background="@drawable/minus" />
 
+                        <TextView
+                            android:id="@+id/txt_modal_product_quantity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="50dp"
+                            android:text="1"
+                            android:textSize="21dp"
+                            android:textStyle="bold" />
 
+                        <Button
+                            android:id="@+id/btn_modal_plus"
+                            android:layout_width="27dp"
+                            android:layout_height="27dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/plus" />
+                    </RelativeLayout>
+                </LinearLayout>
             </LinearLayout>
 
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusedByDefault="false"
+                android:hint="@string/ghi_chu">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_modal_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/without_underline"
+                    android:focusedByDefault="false"
+                    android:inputType="textMultiLine"
+                    android:lines="4"
+                    android:textSize="16dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
-                android:weightSum="10"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="10">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
                     android:layout_weight="5"
                     android:orientation="vertical">
 
                     <TextView
-                        android:textColor="@color/colorPrice"
                         android:id="@+id/txt_modal_product_price_total"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="30000"
-                        android:textStyle="bold"
-                        android:textSize="20dp" />
+                        android:textColor="@color/colorPrice"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txt_product_note_cart"
@@ -179,17 +169,20 @@
                 </LinearLayout>
 
                 <Button
-                    android:layout_weight="5"
                     android:id="@+id/btn_modal_add_to_cart"
-                    android:background="@drawable/radius_button_add_cart"
-                    android:textAllCaps="false"
-                    android:textSize="20dp"
-                    android:textColor="@color/cart_color"
-                    android:layout_gravity="center"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Thêm vào giỏ" />
+                    android:layout_gravity="center"
+                    android:layout_weight="5"
+                    android:background="@drawable/radius_button_add_cart"
+                    android:text="Thêm vào giỏ"
+                    android:textAllCaps="false"
+                    android:textColor="@color/cart_color"
+                    android:textSize="20dp" />
             </LinearLayout>
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

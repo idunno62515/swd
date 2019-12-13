@@ -1,6 +1,7 @@
 package com.example.swd1.views.activities;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -27,7 +28,7 @@ import dmax.dialog.SpotsDialog;
 public class OrderDisplayActivity extends AppCompatActivity implements
         OrderDisplayViewListener, OrderDisplayaAdapter.OnCallback {
 
-    private Button btnPayment, btnAddMore;
+    private Button btnPayment;
     private TextView txtTotalPrice;
 
     private OrderDisplayaAdapter adapter;
@@ -42,7 +43,7 @@ public class OrderDisplayActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_display);
 
-        presenter = new OrderDisplayPresenter(this);
+        presenter = new OrderDisplayPresenter(this, this);
 
         initView();
 
@@ -62,7 +63,6 @@ public class OrderDisplayActivity extends AppCompatActivity implements
 
         lvOrder = findViewById(R.id.lv_order);
         btnPayment = findViewById(R.id.btn_order_pay);
-        btnAddMore = findViewById(R.id.btn_order_add_more);
         txtTotalPrice = findViewById(R.id.txt_order_total);
         lvOrder.setHasFixedSize(true);
         lvOrder.setLayoutManager(new LinearLayoutManager(this));
@@ -98,6 +98,15 @@ public class OrderDisplayActivity extends AppCompatActivity implements
     public void onConnectFailed() {
         Toast.makeText(this, R.string.connect_to_server_failed, Toast.LENGTH_SHORT).show();
         dialog.dismiss();
+    }
+
+    @Override
+    public void onRequestPaymentSuccess() {
+        dialog.dismiss();
+        Toast.makeText(this, R.string.complete_order, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, HomeScreenActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
     @Override

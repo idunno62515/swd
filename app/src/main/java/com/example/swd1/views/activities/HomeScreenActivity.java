@@ -38,7 +38,7 @@ import android.view.Menu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class HomeScreenActivity extends BaseActivity implements
+public class HomeScreenActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener
 {
 

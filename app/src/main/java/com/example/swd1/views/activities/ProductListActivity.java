@@ -20,7 +20,7 @@ import com.example.swd1.views.fragments.ProductBottomSheetDialogFragment;
 
 import java.util.List;
 
-public class ProductListActivity extends AppCompatActivity implements ProductViewListener, ProductVerticalAdapter.OnCallback {
+public class ProductListActivity extends BaseActivity implements ProductViewListener, ProductVerticalAdapter.OnCallback {
 
     private RecyclerView lvProductList;
     private ProductListPresenter presenter;
@@ -32,7 +32,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_list);
 
-        presenter = new ProductListPresenter(this);
+        presenter = new ProductListPresenter(this, this);
 
         initView();
 
@@ -44,6 +44,8 @@ public class ProductListActivity extends AppCompatActivity implements ProductVie
     }
 
     private void initView() {
+
+        createToolbar();
 
         if (Build.VERSION.SDK_INT >= 21) {
             this.getWindow().setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));

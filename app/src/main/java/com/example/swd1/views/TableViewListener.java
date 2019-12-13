@@ -9,5 +9,5 @@ public interface TableViewListener {
 
     void displayTableList(List<Floor> list);
 
-    void displayError();
+    void onConnecFailed();
 }

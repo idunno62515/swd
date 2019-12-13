@@ -6,4 +6,6 @@ public interface OrderDisplayPresenterListener {
     void onGetListOrderSuccess(Order body);
 
     void onConnectFailed();
+
+    void onRequestPaymentSuccess();
 }

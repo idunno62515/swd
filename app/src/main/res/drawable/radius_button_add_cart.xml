@@ -4,6 +4,5 @@
     <solid android:color="@color/white"/>
     <stroke android:color="@color/cart_color"
         android:width="3px"/>
-    <corners android:radius="30dp"/>
 
 </shape>

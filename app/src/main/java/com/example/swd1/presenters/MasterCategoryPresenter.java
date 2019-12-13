@@ -1,5 +1,7 @@
 package com.example.swd1.presenters;
 
+import android.content.Context;
+
 import com.example.swd1.models.MasterCategoryProvider;
 import com.example.swd1.models.entities.MasterCategory;
 import com.example.swd1.views.MasterCategoryViewListener;
@@ -12,9 +14,9 @@ public class MasterCategoryPresenter implements MasterCategoryPresenterListener 
     private MasterCategoryProvider provider;
     private MasterCategoryViewListener callback;
 
-    public MasterCategoryPresenter(MasterCategoryViewListener callback) {
+    public MasterCategoryPresenter(MasterCategoryViewListener callback, Context context) {
         this.callback = callback;
-        this.provider = new MasterCategoryProvider(this);
+        this.provider = new MasterCategoryProvider(this, context);
     }
 
     public void loadMasterCate() {

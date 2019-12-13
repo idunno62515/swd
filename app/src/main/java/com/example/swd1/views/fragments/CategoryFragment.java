@@ -35,7 +35,7 @@ public class CategoryFragment extends Fragment implements CategoryViewListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        presenter = new CategoryPresenter(this);
+        presenter = new CategoryPresenter(this, getActivity());
 
         lvCate = getActivity().findViewById(R.id.lvCategory);
         lvCate.setHasFixedSize(true);

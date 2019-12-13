@@ -1,5 +1,7 @@
 package com.example.swd1.models;
 
+import android.content.Context;
+
 import androidx.annotation.Nullable;
 
 import com.example.swd1.models.entities.Category;
@@ -8,6 +10,7 @@ import com.example.swd1.models.remote.RetrofitClient;
 import com.example.swd1.models.services.CategoryService;
 import com.example.swd1.models.services.TableService;
 import com.example.swd1.presenters.CategoryPresenterListener;
+import com.example.swd1.utils.CommonConstant;
 
 import java.util.List;
 
@@ -20,16 +23,19 @@ public class CategoryProvider {
 
     private CategoryPresenterListener callBack;
 
-    private Retrofit retrofitClient;
+    private CategoryService categoryService;
 
-    public CategoryProvider(CategoryPresenterListener callBack) {
+    public CategoryProvider(CategoryPresenterListener callBack, Context context) {
+
+        String token = context.getSharedPreferences(CommonConstant.APP_SHARE_PREFERENCE, Context.MODE_PRIVATE)
+                .getString(CommonConstant.TOKEN, "");
         this.callBack = callBack;
-        this.retrofitClient = RetrofitClient.getClient();
+
+        this.categoryService = RetrofitClient.getClient(token).create(CategoryService.class);
     }
 
     public void getListCategory(int mastecate) {
-        CategoryService callApi = retrofitClient.create(CategoryService.class);
-        Call<List<Category>> call = callApi.getListCategory(mastecate);
+        Call<List<Category>> call = categoryService.getListCategory(mastecate);
         call.enqueue(new Callback<List<Category>>() {
             @Override
             public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {

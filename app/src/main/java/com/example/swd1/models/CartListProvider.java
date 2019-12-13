@@ -15,6 +15,7 @@ import com.example.swd1.models.remote.RetrofitClient;
 import com.example.swd1.models.services.OrderService;
 import com.example.swd1.presenters.CartListPresenterListener;
 import com.example.swd1.presenters.CartPresenterListener;
+import com.example.swd1.utils.CommonConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,16 +31,18 @@ public class CartListProvider {
 
     private CartDao cartDao;
     private List<CartItem> listCart;
-    private Context context;
     private OrderService orderService;
 
     public CartListProvider(CartListPresenterListener callBack, @NonNull Context context) {
         this.callBack = callBack;
-        this.context = context;
+
+        String token = context.getSharedPreferences(CommonConstant.APP_SHARE_PREFERENCE, Context.MODE_PRIVATE)
+                .getString(CommonConstant.TOKEN, "");
 
         CartDatabase database = CartDatabase.getInstance(context);
         cartDao = database.cartDao();
-        orderService = RetrofitClient.getClient().create(OrderService.class);
+        orderService = RetrofitClient.getClient(token).create(OrderService.class);
+
 
     }
 

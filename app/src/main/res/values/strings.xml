@@ -21,5 +21,6 @@
     <string name="ghi_chu">Ghi chú</string>
     <string name="msg_insert_cart">Đã thêm vào bàn</string>
     <string name="complete_order">Đặt món thành công!</string>
+    <string name="complete_request_payment">Đã gửi yêu cầu thanh toán!</string>
 
 </resources>

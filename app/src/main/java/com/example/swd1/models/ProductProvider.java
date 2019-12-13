@@ -1,5 +1,7 @@
 package com.example.swd1.models;
 
+import android.content.Context;
+
 import com.example.swd1.models.entities.Category;
 import com.example.swd1.models.entities.Product;
 import com.example.swd1.models.remote.RetrofitClient;
@@ -7,6 +9,7 @@ import com.example.swd1.models.services.CategoryService;
 import com.example.swd1.models.services.ProductService;
 import com.example.swd1.presenters.ProductListPresenter;
 import com.example.swd1.presenters.ProductListPresenterListener;
+import com.example.swd1.utils.CommonConstant;
 
 import java.util.List;
 
@@ -16,17 +19,18 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class ProductProvider {
-    private Retrofit retrofitClient;
+    private ProductService productService;
     private ProductListPresenterListener callback;
 
-    public ProductProvider(ProductListPresenterListener callback) {
+    public ProductProvider(ProductListPresenterListener callback, Context context) {
+        String token = context.getSharedPreferences(CommonConstant.APP_SHARE_PREFERENCE, Context.MODE_PRIVATE)
+                .getString(CommonConstant.TOKEN, "");
         this.callback = callback;
-        retrofitClient = RetrofitClient.getClient();
+        this.productService = RetrofitClient.getClient(token).create(ProductService.class);;
     }
 
     public void getListProductByCate(int cate) {
-        ProductService callApi = retrofitClient.create(ProductService.class);
-        Call<List<Product>> call = callApi.getListProductByCate(cate);
+        Call<List<Product>> call = productService.getListProductByCate(cate);
         call.enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {

@@ -48,7 +48,7 @@ public class TableFragment extends Fragment implements TableViewListener, TableA
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        presenter = new TablePresenter(this);
+        presenter = new TablePresenter(this, getActivity());
 
         dialog = new SpotsDialog.Builder()
                 .setContext(getActivity())
@@ -75,7 +75,7 @@ public class TableFragment extends Fragment implements TableViewListener, TableA
     }
 
     @Override
-    public void displayError() {
+    public void onConnecFailed() {
         Toast.makeText(getActivity(), R.string.connect_to_server_failed, Toast.LENGTH_SHORT).show();
         dialog.dismiss();
     }

@@ -1,5 +1,7 @@
 package com.example.swd1.presenters;
 
+import android.content.Context;
+
 import com.example.swd1.models.CategoryProvider;
 import com.example.swd1.models.entities.Category;
 import com.example.swd1.views.CategoryViewListener;
@@ -10,9 +12,9 @@ public class CategoryPresenter implements CategoryPresenterListener{
     private CategoryViewListener callBack;
     private CategoryProvider provider;
 
-    public CategoryPresenter(CategoryViewListener callBack) {
+    public CategoryPresenter(CategoryViewListener callBack, Context context) {
         this.callBack = callBack;
-        this.provider = new CategoryProvider(this);
+        this.provider = new CategoryProvider(this, context);
     }
 
     public void loadCategory(int masteCate) {

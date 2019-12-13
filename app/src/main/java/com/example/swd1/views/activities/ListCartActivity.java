@@ -28,7 +28,7 @@ import java.util.List;
 
 import dmax.dialog.SpotsDialog;
 
-public class ListCartActivity extends AppCompatActivity implements
+public class ListCartActivity extends BaseActivity implements
         CartListViewListener,
         CartListAdapter.OnCallback {
 
@@ -49,7 +49,7 @@ public class ListCartActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_cart);
 
-        presenter = new CartListPresenter((CartListViewListener) this, this);
+        presenter = new CartListPresenter(this, this);
 
         preferences = getSharedPreferences(CommonConstant.APP_SHARE_PREFERENCE, MODE_PRIVATE);
 
@@ -66,11 +66,7 @@ public class ListCartActivity extends AppCompatActivity implements
                 .setCancelable(false)
                 .build();
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Ban so 15");
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      createToolbar();
 
 
         if (Build.VERSION.SDK_INT >= 21) {

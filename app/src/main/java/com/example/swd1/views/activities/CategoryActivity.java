@@ -27,7 +27,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.List;
 
-public class CategoryActivity extends AppCompatActivity implements CategoryViewListener, ProductLinearAdapter.OnCallback {
+public class CategoryActivity extends BaseActivity implements CategoryViewListener, ProductLinearAdapter.OnCallback {
 
     private RecyclerView lvCate;
     private CategoryPresenter presenter;
@@ -46,7 +46,7 @@ public class CategoryActivity extends AppCompatActivity implements CategoryViewL
 
         initView();
 
-        presenter = new CategoryPresenter(this);
+        presenter = new CategoryPresenter(this, this);
 
         Intent intent = getIntent();
         int masterCate = intent.getIntExtra(CommonConstant.MASTER_CATE_ID, -1);
@@ -56,11 +56,7 @@ public class CategoryActivity extends AppCompatActivity implements CategoryViewL
     }
 
     private void initView() {
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        createToolbar();
 
         if (Build.VERSION.SDK_INT >= 21) {
             this.getWindow().setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));
@@ -106,11 +102,7 @@ public class CategoryActivity extends AppCompatActivity implements CategoryViewL
 
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return true;
-    }
+
 
 
 }
