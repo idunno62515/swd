@@ -34,12 +34,21 @@ public class ProductVerticalAdapter extends RecyclerView.Adapter<ProductVertical
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Product product = list.get(position);
+        final Product product = list.get(position);
 
         holder.txtProductName.setText(product.getProductName());
         holder.txtProductPrice.setText(product.getPrice()+"");
-        Picasso.get().load("https://classiarius.net/wp-content/uploads/2019/03/tokyo-a-1000-dollar-burger-for-a-royal-celebration.jpeg")
+        Picasso.get().load("https://pizzatriangle.co.uk/Images/PZ0003.png")
                 .into(holder.imgvProduct);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener != null) {
+                    listener.onItemClick(product);
+                }
+            }
+        });
 
     }
 
@@ -61,7 +70,7 @@ public class ProductVerticalAdapter extends RecyclerView.Adapter<ProductVertical
         }
     }
     public interface OnCallback {
-        void onItemClick();
+        void onItemClick(Product product);
     }
 
 }

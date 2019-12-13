@@ -1,187 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="2dp"
-    android:background="@drawable/radius"
-    android:orientation="vertical">
 
-    <androidx.cardview.widget.CardView
-        android:background="@drawable/radius"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="30dp"
+    android:background="@drawable/background_bottom_sheet">
 
     <LinearLayout
-        android:gravity="center"
-        android:background="@drawable/radius"
+        android:padding="8dp"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="top|center"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_margin="10dp"
-            android:src="@drawable/close"
-            android:layout_width="21dp"
-            android:layout_height="21dp"/>
-        <TextView
-            android:textStyle="bold"
-            android:layout_marginRight="32dp"
-            android:gravity="center"
-            android:textSize="22dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Thêm"/>
-    </LinearLayout>
-    </androidx.cardview.widget.CardView>
-    <LinearLayout
-        android:layout_margin="2dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/imgv_product"
-            android:layout_width="135dp"
-            android:layout_height="135dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="1dp"
-            android:gravity="center"
-            android:src="@mipmap/ic_launcher"></ImageView>
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_marginTop="7dp"
-                android:id="@+id/txt_modal_product_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lines="2"
-                android:text="Name"
-                android:textStyle="bold"
-                android:textSize="18dp"></TextView>
-
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/btnDismiss"
+                android:layout_margin="10dp"
+                android:background="@drawable/close"
+                android:layout_width="21dp"
+                android:layout_height="21dp"/>
             <TextView
                 android:textStyle="bold"
-                android:textColor="@color/colorPrice"
-                android:id="@+id/txt_modal_product_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Price"
-                android:textSize="20dp"></TextView>
-
-            <RelativeLayout
+                android:layout_marginRight="32dp"
+                android:gravity="center"
+                android:textSize="22dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="27dp"
-                    android:layout_height="27dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="72dp"
-                    android:background="@drawable/minus" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="50dp"
-                    android:text="1"
-                    android:textSize="21dp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:layout_width="27dp"
-                    android:layout_height="27dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/plus" />
-            </RelativeLayout>
+                android:text="Thêm"/>
         </LinearLayout>
-    </LinearLayout>
-
-    <androidx.cardview.widget.CardView
-        android:layout_margin="1dp"
-        android:background="@drawable/note"
-        android:layout_width="match_parent"
-        android:layout_height="100dp">
-
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <Button
-                android:layout_margin="1dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Note" />
-
-            <EditText
-                android:layout_marginStart="5dp"
-                android:textSize="18dp"
-                android:background="@drawable/without_underline"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="?android:selectableItemBackground"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_margin="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+            <ImageView
+                android:id="@+id/imgv_modal_product_image"
+                android:layout_width="135dp"
+                android:layout_height="135dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="1dp"
+                android:gravity="center"
+                android:src="@mipmap/ic_launcher"></ImageView>
+
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
-                    android:textColor="@color/colorPrice"
-                    android:id="@+id/txt_product_price_cart"
+                    android:fontFamily="sans-serif-light"
+                    android:id="@+id/txt_modal_product_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="30000"
+                    android:lines="2"
+                    android:text="Name"
                     android:textStyle="bold"
-                    android:textSize="20dp" />
+                    android:textSize="18dp"></TextView>
 
                 <TextView
-                    android:id="@+id/txt_product_note_cart"
+                    android:layout_marginTop="8dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrice"
+                    android:id="@+id/txt_modal_product_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="note..."
-                    android:textSize="20dp" />
+                    android:text="Price"
+                    android:textSize="20dp"></TextView>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_modal_minus"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="90dp"
+                        android:background="@drawable/minus" />
+
+                    <TextView
+                        android:id="@+id/txt_modal_product_quantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="50dp"
+                        android:text="1"
+                        android:textSize="21dp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btn_modal_plus"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/plus" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:hint="@string/ghi_chu"
+                    android:focusedByDefault="false"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txt_modal_note"
+                        android:layout_marginStart="5dp"
+                        android:focusedByDefault="false"
+                        android:textSize="18dp"
+                        android:lines="4"
+                        android:inputType="textMultiLine"
+                        android:background="@drawable/without_underline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
 
             </LinearLayout>
 
-            <Button
-                android:onClick="clickToCart"
-                android:layout_marginLeft="165dp"
-                android:background="@drawable/radius_button_add_cart"
-                android:textAllCaps="false"
-                android:textSize="20dp"
-                android:textColor="@color/cart_color"
-                android:layout_gravity="center"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="Thêm vào giỏ" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
-</LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:weightSum="10"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_weight="5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:textColor="@color/colorPrice"
+                        android:id="@+id/txt_modal_product_price_total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="30000"
+                        android:textStyle="bold"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/txt_product_note_cart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="note..."
+                        android:textSize="20dp" />
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_weight="5"
+                    android:id="@+id/btn_modal_add_to_cart"
+                    android:background="@drawable/radius_button_add_cart"
+                    android:textAllCaps="false"
+                    android:textSize="20dp"
+                    android:textColor="@color/cart_color"
+                    android:layout_gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Thêm vào giỏ" />
+            </LinearLayout>
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

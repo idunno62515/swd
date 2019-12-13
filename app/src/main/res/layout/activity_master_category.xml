@@ -28,43 +28,48 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginTop="4sp"
-            android:id="@+id/lv_master_category"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </androidx.recyclerview.widget.RecyclerView>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/layout_padding">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lv_master_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4sp"></androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+
 
     </LinearLayout>
 
 
-    <FrameLayout
+    <!--    <FrameLayout-->
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end">
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="bottom|end">-->
 
-        <com.nex3z.notificationbadge.NotificationBadge
-            android:id="@+id/badge"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_gravity="top|right"
-            app:nbMaxTextLength="2">
-
-        </com.nex3z.notificationbadge.NotificationBadge>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/fab_margin"
-            android:backgroundTint="@color/colorPrimary"
-            android:src="@drawable/ic_shopping_cart_black_24dp">
+    <!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+    <!--            android:id="@+id/fab_cart"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_margin="@dimen/fab_margin"-->
+    <!--            android:backgroundTint="@color/colorPrimary"-->
+    <!--            android:src="@drawable/ic_shopping_cart_black_24dp">-->
 
 
-        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+    <!--        </com.google.android.material.floatingactionbutton.FloatingActionButton>-->
 
-    </FrameLayout>
+    <!--        <com.nex3z.notificationbadge.NotificationBadge-->
+    <!--            android:id="@+id/badge_cart"-->
+    <!--            android:layout_width="40dp"-->
+    <!--            android:layout_height="40dp"-->
+    <!--            android:layout_gravity="top|right"-->
+    <!--            app:nbMaxTextLength="2">-->
+    <!--        </com.nex3z.notificationbadge.NotificationBadge>-->
+
+    <!--    </FrameLayout>-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

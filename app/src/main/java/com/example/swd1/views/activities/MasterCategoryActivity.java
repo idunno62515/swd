@@ -6,8 +6,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.swd1.R;
@@ -17,10 +20,12 @@ import com.example.swd1.presenters.MasterCategoryPresenter;
 import com.example.swd1.utils.SpaceItemDecoration;
 import com.example.swd1.views.MasterCategoryViewListener;
 import com.example.swd1.views.adapters.MasterCategoryAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
-public class MasterCategoryActivity extends AppCompatActivity implements MasterCategoryViewListener, MasterCategoryAdapter.OnCallback {
+public class MasterCategoryActivity extends BaseActivity implements MasterCategoryViewListener, MasterCategoryAdapter.OnCallback {
 
 
     private RecyclerView lvMasterCate;
@@ -37,6 +42,18 @@ public class MasterCategoryActivity extends AppCompatActivity implements MasterC
         presenter = new MasterCategoryPresenter(this);
 
         presenter.loadMasterCate();
+
+        SharedPreferences preferences = getSharedPreferences(CommonConstant.APP_SHARE_PREFERENCE, MODE_PRIVATE);
+
+        createSnackBar(preferences.getInt(CommonConstant.CURRENT_TABLE_ID,-1), 0);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences preferences = getSharedPreferences(CommonConstant.APP_SHARE_PREFERENCE, MODE_PRIVATE);
+
+        createSnackBar(preferences.getInt(CommonConstant.CURRENT_TABLE_ID,-1), 0);
     }
 
     private void initView() {
@@ -51,6 +68,20 @@ public class MasterCategoryActivity extends AppCompatActivity implements MasterC
         if (Build.VERSION.SDK_INT >= 21) {
             this.getWindow().setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));
         }
+//
+//        fabCart.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_INDEFINITE)
+//                        .setAction("Action", new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View view) {
+//                                startActivity(new Intent(getApplicationContext(), ListCartActivity.class));
+//                            }
+//                        }).show();
+//            }
+//        });
+
 
         lvMasterCate = findViewById(R.id.lv_master_category);
 

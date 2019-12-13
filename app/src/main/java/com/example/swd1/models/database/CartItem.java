@@ -4,11 +4,11 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Cart")
+@Entity(tableName = "CartItem", primaryKeys = {"tableId", "proId"})
 public class CartItem {
 
-    @PrimaryKey(autoGenerate = true)
-    private int id;
+//    @PrimaryKey(autoGenerate = true)
+//    private int id;
 
     private int tableId;
 
@@ -24,20 +24,14 @@ public class CartItem {
 
     private String proNote;
 
-    private int totalPrice;
+    private double totalPrice;
 
     private String servedStaff;
 
     public CartItem() {
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getTableId() {
         return tableId;
@@ -95,11 +89,11 @@ public class CartItem {
         this.proNote = proNote;
     }
 
-    public int getTotalPrice() {
+    public double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(int totalPrice) {
+    public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
 

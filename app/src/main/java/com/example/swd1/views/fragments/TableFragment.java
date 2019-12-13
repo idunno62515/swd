@@ -1,6 +1,8 @@
 package com.example.swd1.views.fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,6 +71,10 @@ public class TableFragment extends Fragment implements TableViewListener, TableA
     public void onItemClick(Table table) {
         Intent intent = new Intent();
         intent.putExtra(CommonConstant.TABLE_ID, table.getId());
+
+        SharedPreferences preferences = getActivity().getSharedPreferences(CommonConstant.APP_SHARE_PREFERENCE, Context.MODE_PRIVATE);
+        preferences.edit().putInt(CommonConstant.CURRENT_TABLE_ID, table.getId()).commit();
+
         startActivity(new Intent(getActivity(), MasterCategoryActivity.class));
     }
 }

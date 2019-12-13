@@ -18,5 +18,8 @@
     <string name="menu_table">Bàn</string>
     <string name="menu_menu">Thực đơn</string>
     <string name="menu_logout">Đăng xuất</string>
+    <string name="ghi_chu">Ghi chú</string>
+    <string name="msg_insert_cart">Đã thêm vào bàn</string>
+    <string name="complete_order">Đặt món thành công!</string>
 
 </resources>

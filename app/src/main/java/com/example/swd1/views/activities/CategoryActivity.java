@@ -21,7 +21,9 @@ import com.example.swd1.utils.CommonConstant;
 import com.example.swd1.views.CategoryViewListener;
 import com.example.swd1.views.adapters.CategoryAdapter;
 import com.example.swd1.views.adapters.ProductLinearAdapter;
+import com.example.swd1.views.fragments.ProductBottomSheetDialogFragment;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.List;
 
@@ -30,8 +32,11 @@ public class CategoryActivity extends AppCompatActivity implements CategoryViewL
     private RecyclerView lvCate;
     private CategoryPresenter presenter;
     private CategoryAdapter adapter;
-    private BottomSheetDialog bottomSheetDialog;
-    private View bottomSheetDialogView;
+    private ProductBottomSheetDialogFragment sheetDialogFragment;
+//    private BottomSheetDialog bottomSheetDialog;
+//    private View bottomSheetDialogView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,9 +66,13 @@ public class CategoryActivity extends AppCompatActivity implements CategoryViewL
             this.getWindow().setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));
         }
 
-        bottomSheetDialog = new BottomSheetDialog(CategoryActivity.this);
-        bottomSheetDialogView = getLayoutInflater().inflate(R.layout.bottom_sheet_layout, null);
-        bottomSheetDialog.setContentView(bottomSheetDialogView);
+//        bottomSheetDialog = new BottomSheetDialog(CategoryActivity.this);
+//        bottomSheetDialogView = getLayoutInflater().inflate(R.layout.bottom_sheet_layout, null);
+//        bottomSheetDialog.setContentView(bottomSheetDialogView);
+
+
+
+
         lvCate = findViewById(R.id.lv_cate);
 
         lvCate.setHasFixedSize(true);
@@ -88,11 +97,13 @@ public class CategoryActivity extends AppCompatActivity implements CategoryViewL
 
     @Override
     public void onAddToCartClick(Product product) {
-        TextView txtName = bottomSheetDialogView.findViewById(R.id.txt_modal_product_name);
-        txtName.setText(product.getProductName());
-        TextView txtPrice = bottomSheetDialogView.findViewById(R.id.txt_modal_product_price);
-        txtPrice.setText(product.getPrice() + "");
-        bottomSheetDialog.show();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("PRODUCT",product);
+
+        sheetDialogFragment = new ProductBottomSheetDialogFragment();
+        sheetDialogFragment.setArguments(bundle);
+        sheetDialogFragment.show(getSupportFragmentManager(), sheetDialogFragment.getTag());
+
     }
 
     @Override
@@ -101,8 +112,5 @@ public class CategoryActivity extends AppCompatActivity implements CategoryViewL
         return true;
     }
 
-    public void clickToCart(View view) {
-        Intent intent = new Intent(this, CartActivity.class);
-        startActivity(intent);
-    }
+
 }

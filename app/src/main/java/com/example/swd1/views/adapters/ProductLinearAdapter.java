@@ -39,6 +39,7 @@ public class ProductLinearAdapter extends RecyclerView.Adapter<ProductLinearAdap
         final Product product = list.get(position);
 
         holder.txtProductName.setText(product.getProductName());
+        holder.txtProductPrice.setText(product.getPrice()+"");
         Picasso.get().load("https://pizzatriangle.co.uk/Images/PZ0003.png")
                 .into(holder.imgvProduct);
 
@@ -47,7 +48,7 @@ public class ProductLinearAdapter extends RecyclerView.Adapter<ProductLinearAdap
             @Override
             public void onClick(View view) {
                 if (listener != null) {
-                    listener.onItemClick(product.getProductId());
+                    listener.onAddToCartClick(product);
                 }
             }
         });
@@ -71,7 +72,7 @@ public class ProductLinearAdapter extends RecyclerView.Adapter<ProductLinearAdap
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imgvProduct;
-        TextView txtProductName;
+        TextView txtProductName, txtProductPrice;
         View layoutItemProduct;
         Button btnAddToCart;
 
@@ -80,6 +81,7 @@ public class ProductLinearAdapter extends RecyclerView.Adapter<ProductLinearAdap
             super(itemView);
             imgvProduct = itemView.findViewById(R.id.imgv_product);
             txtProductName = itemView.findViewById(R.id.txt_product_name);
+            txtProductPrice = itemView.findViewById(R.id.txt_product_price);
             layoutItemProduct = itemView.findViewById(R.id.layout_item_product);
             btnAddToCart = itemView.findViewById(R.id.btnAddToCart);
         }
