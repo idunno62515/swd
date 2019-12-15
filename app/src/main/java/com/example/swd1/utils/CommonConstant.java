@@ -18,6 +18,7 @@ public  class CommonConstant {
     public static final int INVALID_INT = -1;
     public static final String CURRENT_ORDER_ID = "current_order_id";
     public static final String TOKEN = "tokenauth";
+    public static final String USERNAME_LOGIN = "USERNAME_LOGIN";
 
     public static String currencyFormat(double input) {
         DecimalFormat formatter = new DecimalFormat("#,###,###");

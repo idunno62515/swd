@@ -24,7 +24,7 @@ public class TableProvider {
     public TableProvider(TablePresenterListener presenter, Context context) {
         String token = context.getSharedPreferences(CommonConstant.APP_SHARE_PREFERENCE, Context.MODE_PRIVATE)
                         .getString(CommonConstant.TOKEN, "");
-        this.tableService = RetrofitClient.getClient("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHJpbmciLCJqdGkiOiI4NTY4MTMzZS1hMTFiLTQwOTctOWUyYy03MDg5YTkyZjIzNWEiLCJlbWFpbCI6InN0cmluZyIsIm5iZiI6MTU3NjI3ODY3MSwiZXhwIjoxNTc2NTM3ODcxLCJpYXQiOjE1NzYyNzg2NzF9.-asELUe3j8DXHNTOe6QqwpcE3R0zDT2GZDnZ5VdwiHw").create(TableService.class);
+        this.tableService = RetrofitClient.getClient(token).create(TableService.class);
         callBack = presenter;
     }
 

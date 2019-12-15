@@ -22,5 +22,7 @@
     <string name="msg_insert_cart">Đã thêm vào bàn</string>
     <string name="complete_order">Đặt món thành công!</string>
     <string name="complete_request_payment">Đã gửi yêu cầu thanh toán!</string>
+    <string name="waiting">Đang xử lý</string>
+    <string name="login_failed">Tên đăng nhập hoặc mật khẩu không đúng!</string>
 
 </resources>

@@ -4,57 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".views.activities.LoginActivity">
 
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="322dp"
+        android:layout_height="200dp"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
-        android:layout_margin="32dp"
+        android:layout_marginTop="32dp"
         android:src="@drawable/app_icon"></ImageView>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txt_login_username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <LinearLayout
 
-        <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:id="@+id/til_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ten dang nhap"
-            android:text="thien"
-            android:textColorHint="@color/black"></EditText>
+            android:textColorHint="@color/colorPrimary">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <EditText
+                android:id="@+id/txt_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusedByDefault="true"
+                android:hint="@string/login_username_hint"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary" />
+        </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txt_login_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
+            android:id="@+id/til_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Mat khau"
-            android:textColorHint="@color/black">
+            android:textColorHint="@color/colorPrimary">
 
-        </EditText>
+            <EditText
+                android:id="@+id/txt_passwod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
-    </com.google.android.material.textfield.TextInputLayout>
+                android:focusedByDefault="true"
+                android:hint="@string/login_password_hint"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
 
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/border_button"
+        android:layout_margin="16dp"
+        android:background="@color/colorPrimaryDark"
         android:text="DANG NHAP" />
 
 </LinearLayout>

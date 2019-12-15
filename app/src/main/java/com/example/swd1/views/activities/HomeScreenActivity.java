@@ -1,9 +1,12 @@
 package com.example.swd1.views.activities;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.swd1.models.entities.Category;
 import com.example.swd1.models.entities.Table;
+import com.example.swd1.utils.CommonConstant;
 import com.example.swd1.views.adapters.CategoryAdapter;
 import com.example.swd1.views.adapters.TableAdapter;
 import com.example.swd1.views.fragments.CategoryFragment;
@@ -39,8 +42,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class HomeScreenActivity extends AppCompatActivity implements
-        NavigationView.OnNavigationItemSelectedListener
-{
+        NavigationView.OnNavigationItemSelectedListener {
 
     private Fragment tableFragment, menuFragment, userFragment;
     private FragmentTransaction fragmentTransaction;
@@ -129,6 +131,13 @@ public class HomeScreenActivity extends AppCompatActivity implements
             case R.id.nav_menu:
                 break;
             case R.id.nav_logout:
+                SharedPreferences preferences = getSharedPreferences(CommonConstant.APP_SHARE_PREFERENCE, MODE_PRIVATE);
+                preferences.edit().remove(CommonConstant.USERNAME_LOGIN).commit();
+
+                Intent intent = new Intent(this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+
                 break;
             default:
                 break;

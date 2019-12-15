@@ -103,7 +103,7 @@ public class OrderDisplayActivity extends AppCompatActivity implements
     @Override
     public void onRequestPaymentSuccess() {
         dialog.dismiss();
-        Toast.makeText(this, R.string.complete_order, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.complete_request_payment, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, HomeScreenActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
