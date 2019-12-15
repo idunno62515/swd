@@ -65,6 +65,7 @@
                         android:textSize="18dp" />
 
                     <TextView
+                        android:id="@+id/txt_cart_total"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"

@@ -53,6 +53,7 @@ public class TableFragment extends Fragment implements TableViewListener, TableA
         dialog = new SpotsDialog.Builder()
                 .setContext(getActivity())
                 .setCancelable(false)
+                .setMessage(R.string.waiting)
                 .build();
 
         lvFloor = getActivity().findViewById(R.id.lv_floor);

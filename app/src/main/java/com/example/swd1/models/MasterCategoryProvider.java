@@ -1,7 +1,10 @@
 package com.example.swd1.models;
 
 import android.content.Context;
+import android.os.AsyncTask;
 
+import com.example.swd1.models.database.CartDao;
+import com.example.swd1.models.database.CartDatabase;
 import com.example.swd1.models.entities.Category;
 import com.example.swd1.models.entities.MasterCategory;
 import com.example.swd1.models.remote.RetrofitClient;
@@ -18,6 +21,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class MasterCategoryProvider {
+    private final CartDao cartDao;
     private CategoryService categoryService;
     private MasterCategoryPresenterListener callback;
 
@@ -28,6 +32,8 @@ public class MasterCategoryProvider {
                 .getString(CommonConstant.TOKEN, "");
         this.callback = callback;
         this.categoryService = RetrofitClient.getClient(token).create(CategoryService.class);
+        CartDatabase database = CartDatabase.getInstance(context);
+        cartDao = database.cartDao();
     }
 
     public void getListMasterCategory() {
@@ -45,5 +51,28 @@ public class MasterCategoryProvider {
                 callback.onGetListMasterCateFailed();
             }
         });
+    }
+
+    public void countItemCart(int anInt) {
+        new AsyncTask<Integer, Void, Integer>() {
+
+            @Override
+            protected Integer doInBackground(Integer... integers) {
+                return cartDao.countItemCartInTable(integers[0]);
+            }
+
+            @Override
+            protected void onPostExecute(Integer aInteger) {
+
+                if (aInteger == 0) {
+                    callback.cartNotExist(aInteger);
+                } else {
+
+                    callback.cartExist(aInteger);
+                }
+
+
+            }
+        }.execute(anInt);
     }
 }

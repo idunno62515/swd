@@ -12,4 +12,10 @@ public interface CartListPresenterListener {
     void onConnectFailed();
 
     void onSubmitOrderSuccess();
+
+    void updateTotalPrice(Double aDouble);
+
+    void finishCart();
+
+
 }

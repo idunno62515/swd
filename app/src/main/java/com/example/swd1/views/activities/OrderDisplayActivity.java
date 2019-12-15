@@ -28,7 +28,7 @@ import dmax.dialog.SpotsDialog;
 public class OrderDisplayActivity extends AppCompatActivity implements
         OrderDisplayViewListener, OrderDisplayaAdapter.OnCallback {
 
-    private Button btnPayment;
+    private Button btnPayment, btnOrderMore;
     private TextView txtTotalPrice;
 
     private OrderDisplayaAdapter adapter;
@@ -59,10 +59,12 @@ public class OrderDisplayActivity extends AppCompatActivity implements
         dialog = new SpotsDialog.Builder()
                 .setContext(this)
                 .setCancelable(false)
+                .setMessage(R.string.waiting)
                 .build();
 
         lvOrder = findViewById(R.id.lv_order);
         btnPayment = findViewById(R.id.btn_order_pay);
+        btnOrderMore = findViewById(R.id.btn_order_more);
         txtTotalPrice = findViewById(R.id.txt_order_total);
         lvOrder.setHasFixedSize(true);
         lvOrder.setLayoutManager(new LinearLayoutManager(this));
@@ -72,6 +74,14 @@ public class OrderDisplayActivity extends AppCompatActivity implements
             public void onClick(View view) {
                 dialog.show();
                 presenter.requestPayment(preferences.getInt(CommonConstant.CURRENT_ORDER_ID, CommonConstant.INVALID_INT));
+            }
+        });
+
+        btnOrderMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), MasterCategoryActivity.class));
+                finish();
             }
         });
     }

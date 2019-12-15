@@ -38,13 +38,19 @@ public class BaseActivity extends AppCompatActivity {
 
     protected void createSnackBar(int tableNumber, int numberCartItem) {
         String msg = "Bàn " + tableNumber + " : " + numberCartItem + " món chờ";
-        Snackbar.make(getRootView(), msg, Snackbar.LENGTH_INDEFINITE)
-                .setAction("Đặt món", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        startActivity(new Intent(getApplicationContext(), ListCartActivity.class));
-                    }
-                }).show();
+        if(numberCartItem > 0){
+            Snackbar.make(getRootView(), msg, Snackbar.LENGTH_INDEFINITE)
+                    .setAction("Đặt món", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            startActivity(new Intent(getApplicationContext(), ListCartActivity.class));
+                        }
+                    }).show();
+        }else{
+            Snackbar.make(getRootView(), msg, Snackbar.LENGTH_INDEFINITE)
+                    .show();
+        }
+
     }
 
     private View getRootView() {

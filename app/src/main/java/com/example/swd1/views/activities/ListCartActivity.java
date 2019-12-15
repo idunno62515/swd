@@ -14,6 +14,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.swd1.R;
@@ -36,6 +37,8 @@ public class ListCartActivity extends BaseActivity implements
 
     private Button btnCompleteOrder;
 
+    private TextView txtCartTotal;
+
     private CartListAdapter adapter;
     private CartListPresenter presenter;
     private SharedPreferences preferences;
@@ -50,12 +53,14 @@ public class ListCartActivity extends BaseActivity implements
         setContentView(R.layout.activity_list_cart);
 
         presenter = new CartListPresenter(this, this);
+        initView();
 
         preferences = getSharedPreferences(CommonConstant.APP_SHARE_PREFERENCE, MODE_PRIVATE);
 
+        dialog.show();
         presenter.getCartByTableId(preferences.getInt(CommonConstant.CURRENT_TABLE_ID, -1));
 
-        initView();
+        updateTotalPrice();
 
     }
 
@@ -64,9 +69,12 @@ public class ListCartActivity extends BaseActivity implements
         dialog = new SpotsDialog.Builder()
                 .setContext(this)
                 .setCancelable(false)
+                .setMessage(R.string.waiting)
                 .build();
 
-      createToolbar();
+        createToolbar();
+
+        txtCartTotal = findViewById(R.id.txt_cart_total);
 
 
         if (Build.VERSION.SDK_INT >= 21) {
@@ -76,6 +84,7 @@ public class ListCartActivity extends BaseActivity implements
         lvCartList = findViewById(R.id.lv_cart_list);
         lvCartList.setHasFixedSize(true);
         lvCartList.setLayoutManager(new LinearLayoutManager(this));
+
 
         btnCompleteOrder = findViewById(R.id.btn_complete_order);
 
@@ -96,13 +105,16 @@ public class ListCartActivity extends BaseActivity implements
 
     @Override
     public void displayCartList(List<CartItem> cartItems) {
+        dialog.dismiss();
         listCart = cartItems.size() > 0 ? cartItems : new ArrayList<CartItem>();
         adapter = new CartListAdapter(cartItems, this);
+
         lvCartList.setAdapter(adapter);
     }
 
     @Override
     public void onConnecFailed() {
+        dialog.dismiss();
         Toast.makeText(this, R.string.connect_to_server_failed, Toast.LENGTH_SHORT).show();
     }
 
@@ -117,7 +129,52 @@ public class ListCartActivity extends BaseActivity implements
     }
 
     @Override
+    public void updateTotalPrice(Double aDouble) {
+        txtCartTotal.setText("Tổng : "+ CommonConstant.currencyFormat(aDouble));
+    }
+
+    @Override
+    public void finishCart() {
+        Toast.makeText(this, "Không có món ăn được lưu!", Toast.LENGTH_LONG).show();
+        finish();
+    }
+
+    @Override
     public void onItemClick() {
 
+    }
+
+    @Override
+    public void onPlusCartClicked(int position, CartItem cartItem) {
+        cartItem.setQuantity(cartItem.getQuantity() + 1);
+        listCart.set(position, cartItem);
+        presenter.updateCart(cartItem);
+        adapter.notifyItemChanged(position);
+        updateTotalPrice();
+    }
+
+    @Override
+    public void onMinusCartClicked(int position, CartItem cartItem) {
+        cartItem.setQuantity(cartItem.getQuantity() -1);
+        listCart.set(position, cartItem);
+        presenter.updateCart(cartItem);
+        adapter.notifyItemChanged(position);
+        updateTotalPrice();
+    }
+
+    @Override
+    public void onDeleteCart(int position, CartItem cartItem) {
+        listCart.remove(position);
+        adapter.notifyItemRemoved(position);
+
+        adapter.notifyItemRangeChanged(position, listCart.size());
+
+        presenter.deleteCart(cartItem);
+
+        updateTotalPrice();
+    }
+
+    private void updateTotalPrice(){
+        presenter.updateTotalPrice(preferences.getInt(CommonConstant.CURRENT_TABLE_ID, -1));
     }
 }

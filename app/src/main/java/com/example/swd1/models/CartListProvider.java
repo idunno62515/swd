@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.room.Dao;
 
 import com.example.swd1.models.database.CartDao;
 import com.example.swd1.models.database.CartDatabase;
@@ -51,18 +52,70 @@ public class CartListProvider {
         callBack.onInsertCartSuccess();
     }
 
-    public void update(CartItem cartItem) {
-
+    public void update(final CartItem cartItem) {
+        new AsyncTask<CartItem, Void, Void>() {
+            @Override
+            protected Void doInBackground(CartItem... cartItems) {
+                cartDao.update(cartItems[0]);
+                return null;
+            }
+        }.execute(cartItem);
     }
 
     public void delelte(CartItem cartItem) {
-
+        new AsyncTask<CartItem, Void, Void>() {
+            @Override
+            protected Void doInBackground(CartItem... cartItems) {
+                cartDao.delete(cartItems[0]);
+                return null;
+            }
+        }.execute(cartItem);
     }
 
     public void getCartByTableId(int tableId) {
         new getCartByTableIdAsync(cartDao).execute(tableId);
     }
 
+
+    public void countItemCartInTable(int tableId) {
+        new AsyncTask<Integer, Void, Integer>() {
+
+            @Override
+            protected Integer doInBackground(Integer... integers) {
+                return cartDao.countItemCartInTable(integers[0]);
+            }
+
+            @Override
+            protected void onPostExecute(Integer aInteger) {
+
+
+            }
+        }.execute(tableId);
+    }
+
+    public void totalPriceInTable(int tableId) {
+
+        new AsyncTask<Integer, Void, Double>() {
+
+            @Override
+            protected Double doInBackground(Integer... integers) {
+                return cartDao.totalPriceInTable(integers[0]);
+            }
+
+            @Override
+            protected void onPostExecute(Double aDouble) {
+
+                if (aDouble == 0) {
+                    callBack.finishCart();
+                } else {
+
+                    callBack.updateTotalPrice(aDouble);
+                }
+
+
+            }
+        }.execute(tableId);
+    }
 
     public List<CartItem> getAllCart() {
         new AsyncTask<Void, Void, List<CartItem>>() {
@@ -128,9 +181,11 @@ public class CartListProvider {
 
     private class InserCartAsync extends AsyncTask<CartItem, Void, Void> {
         private CartDao cartDao;
+
         public InserCartAsync(CartDao cartDao) {
             this.cartDao = cartDao;
         }
+
         @Override
         protected Void doInBackground(CartItem... cartItems) {
             cartDao.insertOrReplaceAll(cartItems[0]);

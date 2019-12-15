@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swd1.R;
 import com.example.swd1.models.entities.Product;
+import com.example.swd1.utils.CommonConstant;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -37,7 +38,7 @@ public class ProductVerticalAdapter extends RecyclerView.Adapter<ProductVertical
         final Product product = list.get(position);
 
         holder.txtProductName.setText(product.getProductName());
-        holder.txtProductPrice.setText(product.getPrice()+"");
+        holder.txtProductPrice.setText(CommonConstant.currencyFormat(product.getPrice()));
         Picasso.get().load("https://pizzatriangle.co.uk/Images/PZ0003.png")
                 .into(holder.imgvProduct);
 

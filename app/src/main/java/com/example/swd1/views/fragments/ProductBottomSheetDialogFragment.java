@@ -69,8 +69,8 @@ public class ProductBottomSheetDialogFragment extends BottomSheetDialogFragment
         final Product product = (Product) bundle.getSerializable("PRODUCT");
         if (product != null) {
             txtName.setText(product.getProductName());
-            txtPrice.setText(product.getPrice() + "");
-            txtTotal.setText(product.getPrice() + "");
+            txtPrice.setText(CommonConstant.currencyFormat(product.getPrice()));
+            txtTotal.setText("Tổng : "+CommonConstant.currencyFormat(product.getPrice()));
         }
         Picasso.get().load("https://pizzatriangle.co.uk/Images/PZ0003.png")
                 .into(imgvProductImage);
@@ -90,7 +90,7 @@ public class ProductBottomSheetDialogFragment extends BottomSheetDialogFragment
                 } else {
                     currentQuantity -= 1;
                     txtQuantity.setText(currentQuantity + "");
-                    txtTotal.setText((product.getPrice() * currentQuantity) + "");
+                    txtTotal.setText("Tổng : "+CommonConstant.currencyFormat(product.getPrice() * currentQuantity));
                 }
             }
         });
@@ -104,6 +104,7 @@ public class ProductBottomSheetDialogFragment extends BottomSheetDialogFragment
                     currentQuantity += 1;
                     txtQuantity.setText(currentQuantity + "");
                     txtTotal.setText((product.getPrice() * currentQuantity) + "");
+                    txtTotal.setText("Tổng : "+CommonConstant.currencyFormat(product.getPrice() * currentQuantity));
                 }
             }
         });
@@ -123,7 +124,8 @@ public class ProductBottomSheetDialogFragment extends BottomSheetDialogFragment
                 cartItem.setProPrice(product.getPrice());
                 cartItem.setProNote(txtNote.getText().toString());
                 cartItem.setTotalPrice(product.getPrice() * quantity);
-                cartItem.setServedStaff(preferences.getString(CommonConstant.STAFF_NAME, "Anynomous"));
+
+                cartItem.setServedStaff(preferences.getString(CommonConstant.STAFF_NAME, getActivity().getSharedPreferences(CommonConstant.APP_SHARE_PREFERENCE, Context.MODE_PRIVATE).getString(CommonConstant.STAFF_NAME, "anynomous")));
 
                 presenter.insertCart(cartItem);
             }

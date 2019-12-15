@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,12 +21,15 @@ import com.example.swd1.views.fragments.ProductBottomSheetDialogFragment;
 
 import java.util.List;
 
+import dmax.dialog.SpotsDialog;
+
 public class ProductListActivity extends BaseActivity implements ProductViewListener, ProductVerticalAdapter.OnCallback {
 
     private RecyclerView lvProductList;
     private ProductListPresenter presenter;
     private ProductVerticalAdapter adapter;
     private ProductBottomSheetDialogFragment sheetDialogFragment;
+    private AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +43,18 @@ public class ProductListActivity extends BaseActivity implements ProductViewList
         Intent intent = getIntent();
         int cate = intent.getIntExtra(CommonConstant.CATE_ID, 0);
 
+        dialog.show();
         presenter.loadProductListByCate(cate);
 
     }
 
     private void initView() {
+
+        dialog = new SpotsDialog.Builder()
+                .setContext(this)
+                .setCancelable(false)
+                .setMessage(R.string.waiting)
+                .build();
 
         createToolbar();
 
@@ -58,13 +69,15 @@ public class ProductListActivity extends BaseActivity implements ProductViewList
 
     @Override
     public void displayProduct(List<Product> list) {
+        dialog.dismiss();
         adapter = new ProductVerticalAdapter(list, this);
         lvProductList.setAdapter(adapter);
     }
 
     @Override
     public void displayError() {
-
+        dialog.dismiss();
+        Toast.makeText(this, R.string.connect_to_server_failed, Toast.LENGTH_SHORT).show();
     }
 
     @Override

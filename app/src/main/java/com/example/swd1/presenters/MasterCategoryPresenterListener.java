@@ -7,4 +7,8 @@ import java.util.List;
 public interface MasterCategoryPresenterListener {
     void onGetListMasterCateSuccess(List<MasterCategory> list);
     void onGetListMasterCateFailed();
+
+    void cartNotExist(Integer aInteger);
+
+    void cartExist(Integer aInteger);
 }

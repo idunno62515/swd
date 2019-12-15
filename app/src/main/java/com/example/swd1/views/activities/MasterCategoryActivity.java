@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -25,6 +26,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
+import dmax.dialog.SpotsDialog;
+
 public class MasterCategoryActivity extends BaseActivity implements MasterCategoryViewListener, MasterCategoryAdapter.OnCallback {
 
 
@@ -32,6 +35,7 @@ public class MasterCategoryActivity extends BaseActivity implements MasterCatego
     private MasterCategoryPresenter presenter;
     private MasterCategoryAdapter adapter;
     private SharedPreferences preferences;
+    private AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,8 @@ public class MasterCategoryActivity extends BaseActivity implements MasterCatego
 
         presenter = new MasterCategoryPresenter(this, this);
 
+
+        dialog.show();
         presenter.loadMasterCate();
 
         preferences = getSharedPreferences(CommonConstant.APP_SHARE_PREFERENCE, MODE_PRIVATE);
@@ -56,11 +62,19 @@ public class MasterCategoryActivity extends BaseActivity implements MasterCatego
         super.onResume();
         preferences = getSharedPreferences(CommonConstant.APP_SHARE_PREFERENCE, MODE_PRIVATE);
 
-        createSnackBar(preferences.getInt(CommonConstant.CURRENT_TABLE_ID, -1), 0);
+        presenter.countItemCart(preferences.getInt(CommonConstant.CURRENT_TABLE_ID, -1));
+
+
     }
 
     private void initView() {
 
+
+        dialog = new SpotsDialog.Builder()
+                .setContext(this)
+                .setCancelable(false)
+                .setMessage(R.string.waiting)
+                .build();
 
 
 
@@ -110,6 +124,7 @@ public class MasterCategoryActivity extends BaseActivity implements MasterCatego
 
     @Override
     public void displayMasterCategory(List<MasterCategory> list) {
+        dialog.dismiss();
         adapter = new MasterCategoryAdapter(list, this);
         lvMasterCate.setAdapter(adapter);
 
@@ -117,7 +132,18 @@ public class MasterCategoryActivity extends BaseActivity implements MasterCatego
 
     @Override
     public void displayError() {
+        dialog.dismiss();
         Toast.makeText(this, R.string.connect_to_server_failed, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void cartNotExist(Integer aInteger) {
+        createSnackBar(preferences.getInt(CommonConstant.CURRENT_TABLE_ID, -1), 0);
+    }
+
+    @Override
+    public void cartExist(Integer aInteger) {
+        createSnackBar(preferences.getInt(CommonConstant.CURRENT_TABLE_ID, -1), aInteger);
     }
 
     @Override

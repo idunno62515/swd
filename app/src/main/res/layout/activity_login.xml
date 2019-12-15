@@ -32,9 +32,12 @@
             android:id="@+id/til_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/colorPrimary"
             android:textColorHint="@color/colorPrimary">
 
             <EditText
+
+                android:inputType="text"
                 android:id="@+id/txt_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -49,6 +52,7 @@
             android:id="@+id/til_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/colorPrimary"
             android:textColorHint="@color/colorPrimary">
 
             <EditText
@@ -58,6 +62,7 @@
 
                 android:focusedByDefault="true"
                 android:hint="@string/login_password_hint"
+                android:inputType="textPassword"
                 android:textColor="@color/colorPrimary"
                 android:textColorHint="@color/colorPrimary" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -70,7 +75,8 @@
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:textColor="@color/white"
+        android:layout_marginHorizontal="32dp"
         android:background="@color/colorPrimaryDark"
         android:text="DANG NHAP" />
 

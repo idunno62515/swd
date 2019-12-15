@@ -13,4 +13,10 @@ public interface CartListViewListener {
     void onConnecFailed();
 
     void onSubmitOrderSuccess();
+
+    void updateTotalPrice(Double aDouble);
+
+    void finishCart();
+
+
 }

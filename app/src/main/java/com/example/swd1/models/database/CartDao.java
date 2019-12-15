@@ -23,6 +23,13 @@ public interface CartDao {
     @Query("SELECT * FROM CartItem WHERE tableId=:tableId AND proId=:proId")
     List<CartItem> getItemCart(int tableId, int proId);
 
+
+    @Query("SELECT COUNT(*) FROM CartItem WHERE tableId=:tableId")
+    int countItemCartInTable(int tableId);
+
+    @Query("SELECT SUM(quantity*proPrice) FROM CartItem WHERE tableId=:tableId")
+    double totalPriceInTable(int tableId);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertOrReplaceAll(CartItem... cartItem);
 
@@ -34,4 +41,7 @@ public interface CartDao {
 
     @Query("DELETE FROM CartItem WHERE tableId=:tableId")
     void clearCartInTable(int tableId);
+
+    @Query("DELETE FROM CartItem")
+    void clearCart();
 }

@@ -87,9 +87,10 @@ public class LoginActivity extends AppCompatActivity implements LoginViewListene
 
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(CommonConstant.TOKEN, token);
-        editor.putString(CommonConstant.USERNAME_LOGIN, txtUsername.getText().toString());
+        editor.putString(CommonConstant.STAFF_NAME, txtUsername.getText().toString());
         editor.commit();
         dialog.dismiss();
+        txtUsername.setText(txtUsername.getText().toString());
         startActivity(new Intent(this, HomeScreenActivity.class));
         finish();
 

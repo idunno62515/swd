@@ -8,4 +8,8 @@ public interface MasterCategoryViewListener {
     void displayMasterCategory(List<MasterCategory> list);
 
     void displayError();
+
+    void cartNotExist(Integer aInteger);
+
+    void cartExist(Integer aInteger);
 }

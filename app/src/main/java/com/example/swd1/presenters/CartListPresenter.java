@@ -8,7 +8,7 @@ import com.example.swd1.views.CartListViewListener;
 
 import java.util.List;
 
-public class CartListPresenter implements CartListPresenterListener{
+public class CartListPresenter implements CartListPresenterListener {
 
     private CartListViewListener callBack;
     private CartListProvider cartListProvider;
@@ -39,6 +39,18 @@ public class CartListPresenter implements CartListPresenterListener{
         callBack.onSubmitOrderSuccess();
     }
 
+    @Override
+    public void updateTotalPrice(Double aDouble) {
+        callBack.updateTotalPrice(aDouble);
+    }
+
+    @Override
+    public void finishCart() {
+        callBack.finishCart();
+    }
+
+
+
     public void getAllCart() {
         cartListProvider.getAllCart();
     }
@@ -49,5 +61,18 @@ public class CartListPresenter implements CartListPresenterListener{
 
     public void submitOrder(List<CartItem> listCart) {
         cartListProvider.submitOrder(listCart);
+    }
+
+    public void updateCart(CartItem cartItem) {
+        cartListProvider.update(cartItem);
+    }
+
+    public void deleteCart(CartItem cartItem) {
+        cartListProvider.delelte(cartItem);
+    }
+
+
+    public void updateTotalPrice(int tableid) {
+        cartListProvider.totalPriceInTable(tableid);
     }
 }

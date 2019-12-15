@@ -32,4 +32,18 @@ public class MasterCategoryPresenter implements MasterCategoryPresenterListener 
     public void onGetListMasterCateFailed() {
         callback.displayError();
     }
+
+    @Override
+    public void cartNotExist(Integer aInteger) {
+        callback.cartNotExist(aInteger);
+    }
+
+    @Override
+    public void cartExist(Integer aInteger) {
+        callback.cartExist(aInteger);
+    }
+
+    public void countItemCart(int anInt) {
+        provider.countItemCart(anInt);
+    }
 }

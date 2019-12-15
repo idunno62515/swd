@@ -44,12 +44,27 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:weightSum="2"
                     android:layout_height="50dp"
                     android:orientation="horizontal"
                    >
+                    <Button
+                        android:id="@+id/btn_order_more"
+                        android:background="@drawable/radius_button_add_more_cart"
+                        android:textColor="@color/cart_color"
+                        android:layout_weight="1"
+                        android:textSize="18sp"
+                        android:textAllCaps="false"
+                        android:text="Đặt thêm"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+
+                    </Button>
+
                     <TextView
+                        android:layout_weight="1"
                         android:id="@+id/txt_order_total"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="Tổng: 180000"
                         android:gravity="end"
@@ -59,6 +74,8 @@
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
+
 
             <Button
                 android:id="@+id/btn_order_pay"
