@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swd1.R;
+import com.example.swd1.models.remote.RetrofitConstants;
 import com.example.swd1.utils.AppStatus;
 import com.example.swd1.utils.CommonConstant;
 import com.example.swd1.models.entities.Floor;
@@ -27,6 +28,9 @@ import com.example.swd1.views.activities.MasterCategoryActivity;
 import com.example.swd1.views.activities.OrderDisplayActivity;
 import com.example.swd1.views.adapters.FloorAdapter;
 import com.example.swd1.views.adapters.TableAdapter;
+import com.microsoft.signalr.HubConnection;
+import com.microsoft.signalr.HubConnectionBuilder;
+import com.microsoft.signalr.HubConnectionState;
 
 import java.util.List;
 
@@ -37,6 +41,7 @@ public class TableFragment extends Fragment implements TableViewListener, TableA
     private RecyclerView lvFloor;
     private TablePresenter presenter;
     private AlertDialog dialog;
+    private HubConnection hubConnection;
 
     @Nullable
     @Override
@@ -49,6 +54,15 @@ public class TableFragment extends Fragment implements TableViewListener, TableA
         super.onViewCreated(view, savedInstanceState);
 
         presenter = new TablePresenter(this, getActivity());
+
+        hubConnection = HubConnectionBuilder.create(RetrofitConstants.HUB_URL).build();
+        if (hubConnection.getConnectionState() == HubConnectionState.DISCONNECTED) {
+            hubConnection.start();
+        }
+
+        hubConnection.on("UpdateTable", (id)->{
+            Toast.makeText(getActivity(), "Changed", Toast.LENGTH_SHORT).show();
+        }, Integer.class);
 
         dialog = new SpotsDialog.Builder()
                 .setContext(getActivity())
@@ -87,9 +101,9 @@ public class TableFragment extends Fragment implements TableViewListener, TableA
         SharedPreferences preferences = getActivity().getSharedPreferences(CommonConstant.APP_SHARE_PREFERENCE, Context.MODE_PRIVATE);
         preferences.edit().putInt(CommonConstant.CURRENT_TABLE_ID, table.getId()).commit();
 
-        if(table.getStatus() == AppStatus.TABLE_AVAILABLE){
+        if (table.getStatus() == AppStatus.TABLE_AVAILABLE) {
             startActivity(new Intent(getActivity(), MasterCategoryActivity.class));
-        }else{
+        } else {
             startActivity(new Intent(getActivity(), OrderDisplayActivity.class));
         }
 
