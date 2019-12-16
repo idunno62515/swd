@@ -20,6 +20,8 @@ import com.example.swd1.presenters.OrderDisplayPresenter;
 import com.example.swd1.utils.CommonConstant;
 import com.example.swd1.views.OrderDisplayViewListener;
 import com.example.swd1.views.adapters.OrderDisplayaAdapter;
+import com.microsoft.signalr.HubConnection;
+import com.microsoft.signalr.HubConnectionBuilder;
 
 import java.text.DecimalFormat;
 
@@ -37,6 +39,8 @@ public class OrderDisplayActivity extends AppCompatActivity implements
     private SharedPreferences preferences;
     private AlertDialog dialog;
 
+//    private HubConnection hubConnection;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,14 @@ public class OrderDisplayActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_order_display);
 
         presenter = new OrderDisplayPresenter(this, this);
+
+//        hubConnection = HubConnectionBuilder.create("http://192.168.57.7:4545/testhub").build();
+//        hubConnection.start();
+//
+//        hubConnection.on("UpdateTableStatus", (id)->{
+//
+//        }, Integer.class);
+
 
         initView();
 

@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity implements LoginViewListene
 
         loginPresenter = new LoginPresenter(this, this);
 
-        String username = preferences.getString(CommonConstant.USERNAME_LOGIN, "");
+        String username = preferences.getString(CommonConstant.STAFF_NAME, "");
 
 
         if(username!=null && !username.isEmpty()){
@@ -51,8 +51,6 @@ public class LoginActivity extends AppCompatActivity implements LoginViewListene
             finish();
             dialog.dismiss();
         }
-
-
 
     }
 

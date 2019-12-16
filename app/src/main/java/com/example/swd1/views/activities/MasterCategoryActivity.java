@@ -11,11 +11,15 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.swd1.R;
 import com.example.swd1.models.entities.MasterCategory;
+import com.example.swd1.models.entities.Product;
 import com.example.swd1.utils.CommonConstant;
 import com.example.swd1.presenters.MasterCategoryPresenter;
 import com.example.swd1.utils.SpaceItemDecoration;
@@ -27,6 +31,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.List;
 
 import dmax.dialog.SpotsDialog;
+import io.reactivex.annotations.NonNull;
 
 public class MasterCategoryActivity extends BaseActivity implements MasterCategoryViewListener, MasterCategoryAdapter.OnCallback {
 
@@ -67,6 +72,25 @@ public class MasterCategoryActivity extends BaseActivity implements MasterCatego
 
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.home_screen, menu);
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_search) {
+            startActivity(new Intent(getApplicationContext(), ProductListActivity.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
     private void initView() {
 
 
@@ -75,7 +99,6 @@ public class MasterCategoryActivity extends BaseActivity implements MasterCatego
                 .setCancelable(false)
                 .setMessage(R.string.waiting)
                 .build();
-
 
 
         if (Build.VERSION.SDK_INT >= 21) {

@@ -45,4 +45,21 @@ public class ProductProvider {
             }
         });
     }
+
+    public void getListProductByName(String name) {
+        Call<List<Product>> call = productService.getListProductBySearching(name);
+        call.enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                if (response.isSuccessful()) {
+                    callback.onGetListProductSuccess(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+                callback.onGetListProductFailed();
+            }
+        });
+    }
 }

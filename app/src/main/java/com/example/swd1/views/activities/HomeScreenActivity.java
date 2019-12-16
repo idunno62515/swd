@@ -89,27 +89,27 @@ public class HomeScreenActivity extends AppCompatActivity implements
         txtUsername = headerView.findViewById(R.id.txt_username);
         txtFullname = headerView.findViewById(R.id.txt_fullname);
 
-        txtUsername.setText("Nhanvien1");
-        txtFullname.setText("Nguyen Van Teo ");
+//        txtUsername.setText("Nhanvien1");
+//        txtFullname.setText("Nguyen Van Teo ");
 
         showTableFragment();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home_screen, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.home_screen, menu);
+//        return true;
+//    }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        int id = item.getItemId();
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
 
     @Override
@@ -132,7 +132,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
                 break;
             case R.id.nav_logout:
                 SharedPreferences preferences = getSharedPreferences(CommonConstant.APP_SHARE_PREFERENCE, MODE_PRIVATE);
-                preferences.edit().remove(CommonConstant.USERNAME_LOGIN).commit();
+                preferences.edit().remove(CommonConstant.STAFF_NAME).commit();
 
                 Intent intent = new Intent(this, LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -8,6 +8,10 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.swd1.R;
@@ -19,6 +23,7 @@ import com.example.swd1.views.adapters.ProductLinearAdapter;
 import com.example.swd1.views.adapters.ProductVerticalAdapter;
 import com.example.swd1.views.fragments.ProductBottomSheetDialogFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dmax.dialog.SpotsDialog;
@@ -43,9 +48,43 @@ public class ProductListActivity extends BaseActivity implements ProductViewList
         Intent intent = getIntent();
         int cate = intent.getIntExtra(CommonConstant.CATE_ID, 0);
 
-        dialog.show();
-        presenter.loadProductListByCate(cate);
+        if (cate != 0) {
+            dialog.show();
+            presenter.loadProductListByCate(cate);
+        } else {
+            adapter = new ProductVerticalAdapter(new ArrayList<>(), this);
+            lvProductList.setAdapter(adapter);
+            Toast.makeText(this, "Nhập để tìm kiếm", Toast.LENGTH_LONG).show();
+        }
 
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.product_screen, menu);
+
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setQueryHint("Nhập để tìm kiếm");
+        searchView.setIconifiedByDefault(false);
+
+       searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+           @Override
+           public boolean onQueryTextSubmit(String s) {
+               return false;
+           }
+
+           @Override
+           public boolean onQueryTextChange(String s) {
+               dialog.show();
+               presenter.loadProductListBySearching(s);
+               return true;
+           }
+       });
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     private void initView() {
@@ -70,6 +109,9 @@ public class ProductListActivity extends BaseActivity implements ProductViewList
     @Override
     public void displayProduct(List<Product> list) {
         dialog.dismiss();
+        if(list.isEmpty()){
+            Toast.makeText(this, "Danh sách trống", Toast.LENGTH_SHORT).show();
+        }
         adapter = new ProductVerticalAdapter(list, this);
         lvProductList.setAdapter(adapter);
     }

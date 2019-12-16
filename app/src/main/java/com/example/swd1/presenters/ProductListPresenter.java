@@ -23,8 +23,8 @@ public class ProductListPresenter implements ProductListPresenterListener {
         provider.getListProductByCate(cateId);
     }
 
-    public void loadProductListBySearching(String condition) {
-
+    public void loadProductListBySearching(String name) {
+        provider.getListProductByName(name);
     }
 
     @Override

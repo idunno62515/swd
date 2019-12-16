@@ -24,5 +24,6 @@
     <string name="complete_request_payment">Đã gửi yêu cầu thanh toán!</string>
     <string name="waiting">Đang xử lý</string>
     <string name="login_failed">Tên đăng nhập hoặc mật khẩu không đúng!</string>
+    <string name="search">Tìm kiếm...</string>
 
 </resources>

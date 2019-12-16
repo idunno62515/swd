@@ -12,7 +12,7 @@ public interface ProductService {
 
     @GET("products?")
     Call<List<Product>> getListProductByCate(@Query("cate") int cate);
-    @GET("products?")
-    Call<List<Product>> getListProductBySearching(@Query("condition") String condition);
+    @GET("products/search?")
+    Call<List<Product>> getListProductBySearching(@Query("name") String condition);
 
 }
