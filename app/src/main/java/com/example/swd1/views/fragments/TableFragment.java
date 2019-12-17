@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,6 +43,7 @@ public class TableFragment extends Fragment implements TableViewListener, TableA
     private TablePresenter presenter;
     private AlertDialog dialog;
     private HubConnection hubConnection;
+    private List<Table> lsTable;
 
     @Nullable
     @Override
@@ -56,13 +58,19 @@ public class TableFragment extends Fragment implements TableViewListener, TableA
         presenter = new TablePresenter(this, getActivity());
 
         hubConnection = HubConnectionBuilder.create(RetrofitConstants.HUB_URL).build();
-        if (hubConnection.getConnectionState() == HubConnectionState.DISCONNECTED) {
-            hubConnection.start();
-        }
 
-        hubConnection.on("UpdateTable", (id)->{
-            Toast.makeText(getActivity(), "Changed", Toast.LENGTH_SHORT).show();
-        }, Integer.class);
+        hubConnection.start();
+
+        hubConnection.on("UpdateTable", (id, status) -> {
+//            getActivity().runOnUiThread(new Runnable() {
+////                public void run() {
+////                    Toast.makeText(getActivity(), id+"", Toast.LENGTH_SHORT).show();
+////                }
+////            });
+            presenter.loadTableList();
+
+        }, Integer.class, Integer.class);
+
 
         dialog = new SpotsDialog.Builder()
                 .setContext(getActivity())
@@ -82,9 +90,10 @@ public class TableFragment extends Fragment implements TableViewListener, TableA
     @Override
     public void displayTableList(List<Floor> list) {
 
+
+        dialog.dismiss();
         FloorAdapter floorAdapter = new FloorAdapter(list, this);
         lvFloor.setAdapter(floorAdapter);
-        dialog.dismiss();
 //        TableAdapter tableAdapter = new TableAdapter(list, (TableAdapter.OnCallBack) getActivity());
 //        lvTable.setAdapter(tableAdapter);
     }
@@ -110,3 +119,7 @@ public class TableFragment extends Fragment implements TableViewListener, TableA
 
     }
 }
+
+
+
+
